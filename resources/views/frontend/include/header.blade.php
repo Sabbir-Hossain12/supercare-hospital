@@ -41,7 +41,7 @@
 							<div class="col-lg-3 col-md-3 col-12">
 								<!-- Start Logo -->
 								<div class="logo">
-									<a href="{{ url('/') }}"><img src="{{ asset('public/frontend/img/danpitelogo.png') }}" alt="#"></a>
+									<a href="{{ url('/') }}"><img src="{{ asset($basicInfo->logo) }}" style="width: 180px; height:50px " alt="#"></a>
 								</div>
 								<!-- End Logo -->
 								<!-- Mobile Nav -->
