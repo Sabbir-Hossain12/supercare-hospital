@@ -27,6 +27,8 @@
                   <th>#SL.</th>
                   <th>Image</th>
                   <th>Title</th>
+                  <th>Appointment Url</th>
+                  <th>Learn More Url</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -75,8 +77,8 @@
                             </div>
 
                             <div class="col mb-3">
-                                <label for="learn_url" class="form-label">Learn More Url</label>
-                                <input type="text" id="learn_url" name="learn_url" class="form-control" placeholder="Learn More Url">
+                                <label for="learn_more_url" class="form-label">Learn More Url</label>
+                                <input type="text" id="learn_more_url" name="learn_more_url" class="form-control" placeholder="Learn More Url">
                             </div>
                         </div>
 
@@ -145,8 +147,8 @@
                         </div>
 
                         <div class="col mb-3">
-                            <label for="up_learn_url" class="form-label">Learn More Url</label>
-                            <input type="text" id="up_learn_url" name="Learn_url" class="form-control" placeholder="Learn More Url">
+                            <label for="up_learn_more_url" class="form-label">Learn More Url</label>
+                            <input type="text" id="up_learn_more_url" name="learn_more_url" class="form-control" placeholder="Learn More Url">
                         </div>
                     </div>
 
@@ -210,6 +212,12 @@
                 },
                 {
                     data: 'title'
+                },
+                {
+                    data: 'appointment_url'
+                },
+                {
+                    data: 'learn_more_url'
                 },
                 {
                     data: 'status'
@@ -320,7 +328,7 @@
                     $('#up_id').val(data.id);
                     $('#up_title').val(data.title);
                     $('#up_appointment_url').val(data.appointment_url);
-                    $('#up_learn_url').val(data.learn_url);
+                    $('#up_learn_more_url').val(data.learn_more_url);
                     $('#up_description').val(data.description);
                     $('#imageShow').html('');
                     $('#imageShow').append(`
