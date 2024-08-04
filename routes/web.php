@@ -11,6 +11,9 @@ Route::get('/', function () {
 Route::get('/details', function () {
     return view('frontend.pages.details');
 });
+Route::get('/project-details', function () {
+    return view('frontend.pages.project.project-details');
+});
 
 Route::view('/contact', 'frontend.pages.static_pages.contact');
 

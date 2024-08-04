@@ -2,19 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\BannerController;
-use App\Http\Controllers\Backend\ReviewController;
-use App\Http\Controllers\Backend\ProjectController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\AboutController;
-use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\ProjectController;
 use App\Http\Controllers\Backend\BasicInfoController;
-use App\Http\Controllers\Backend\ProfessionalController;
-use App\Http\Controllers\Backend\SafetyController;
-use App\Http\Controllers\Backend\PricePlanController;
-use App\Http\Controllers\Backend\ServiceInfoController;
 
 
 // Route::view('/admin/login', 'backend.pages.login.index');
@@ -36,14 +28,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['Is_admin', 'auth']], functi
     Route::post('/contact/status',[ContactController::class,'adminContactStatus'])->name('admin.contact.status');
 
 
+    //____ Project  ____//
+    Route::resource('project', ProjectController::class)->names('admin.project');
+    Route::get('/get-project',[ProjectController::class,'getData'])->name('admin.get-project');
+    Route::post('/project/status',[ProjectController::class,'adminProjectStatus'])->name('admin.project.status');
+
+
     //____ BasicInfo  ____//
     Route::resource('basic-info', BasicInfoController::class)->names('admin.basic-info');
 
 
     //____ About  ____//
     Route::resource('about', AboutController::class)->names('admin.about');
-
-
 
 });
 
