@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('title');
-            $table->string('url')->nullable();
+            $table->string('color')->nullable()->default('#45AC8B');
+            $table->text('video')->nullable();
             $table->text('description');
             $table->timestamps();
         });

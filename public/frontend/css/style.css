@@ -983,15 +983,22 @@ body{
 .why-choose .choose-left p{
 	margin-bottom:35px;
 }
-.why-choose .choose-left .list{}
-.why-choose .choose-left .list li {
+.why-choose .choose-left ul{}
+.why-choose .choose-left ul li {
 	color: #868686;
-	margin-bottom: 12px;
+	margin-bottom: 4px;
 }
-.why-choose .choose-left .list li:last-child{
+.why-choose .choose-left ul li::before{
+	content: '\21E8';
+	color: #45AC8B;
+    font-weight: 700;
+    font-size: 22px;
+    margin-right: 16px;
+}
+.why-choose .choose-left ul li:last-child{
 	margin-bottom:0px;
 }
-.why-choose .choose-left .list li i{
+.why-choose .choose-left ul li i{
 	height:15px;
 	width:15px;
 	line-height:15px;
@@ -1467,7 +1474,7 @@ body{
 	border-radius: 3px;
 	margin: 0 0 0 -52px;
 	margin-top: 49px;
-	box-sizing: ;
+	box-sizing: border-box;
 }
 .testimonials .owl-dots .owl-dot {
 	display: inline-block;
