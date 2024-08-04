@@ -1,20 +1,16 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\BannerController;
-use App\Http\Controllers\Backend\ReviewController;
-use App\Http\Controllers\Backend\ProjectController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\AboutController;
-use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\BasicInfoController;
-use App\Http\Controllers\Backend\ProfessionalController;
-use App\Http\Controllers\Backend\SafetyController;
-use App\Http\Controllers\Backend\PricePlanController;
-use App\Http\Controllers\Backend\ServiceInfoController;
+
 
 
 // Route::view('/admin/login', 'backend.pages.login.index');
@@ -44,6 +40,27 @@ Route::group(['prefix' => 'admin', 'middleware' => ['Is_admin', 'auth']], functi
     Route::resource('about', AboutController::class)->names('admin.about');
 
 
+    //____  Schedule  ____//    
+    Route::resource('schedule', ScheduleController::class)->names('admin.schedule');
+    Route::get('/get-schedule',[ScheduleController::class,'getData'])->name('admin.get-schedule');
+    Route::post('/schedule/status',[ScheduleController::class,'adminServiceStatus'])->name('admin.schedule.status');
+    
+    
+    //____  Service  ____//
+    Route::resource('service', ServiceController::class)->names('admin.service');
+    Route::get('/get-service',[ServiceController::class,'getData'])->name('admin.get-service');
+    Route::post('/service/status',[ServiceController::class,'serviceStatus'])->name('admin.service.status');
 
+    
+    //____Blog___//
+    Route::resource('blog', BlogController::class)->names('admin.blog');
+    Route::get('/get-blog',[BlogController::class,'getData'])->name('admin.get-blog');
+    Route::post('/blog/status',[BlogController::class,'adminBlogStatus'])->name('admin.blog.status');
+    
+    //___Appointment___//
+    Route::resource('appointment', AppointmentController::class)->names('admin.appointment');
+    Route::get('/get-appointment',[AppointmentController::class,'getData'])->name('admin.get-appointment');
+    Route::post('/appointment/status',[AppointmentController::class,'adminAppointmentStatus'])->name('admin.appointment.status');
+    
 });
 

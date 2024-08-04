@@ -75,6 +75,71 @@
           </li>
         </ul>
       </li>
+        {{--   Schedule    --}}
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-phone-call"></i>
+                <div data-i18n="Layouts">Schedule</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.schedule.index') }}" class="menu-link">
+                        <div data-i18n="Without menu">Manage Schedule</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+   
+        
+        {{--   Service     --}}
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-phone-call"></i>
+                <div data-i18n="Layouts">Service</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.service.index') }}" class="menu-link">
+                        <div data-i18n="Without menu">Manage Service</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        {{--   Appointments    --}}
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-phone-call"></i>
+                <div data-i18n="Layouts">Appointments</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.schedule.index') }}" class="menu-link">
+                        <div data-i18n="Without menu">Manage Appointments</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        {{--   Blogs    --}}
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-phone-call"></i>
+                <div data-i18n="Layouts">Blogs</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.schedule.index') }}" class="menu-link">
+                        <div data-i18n="Without menu">Manage Blogs</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Options</span></li>
 
