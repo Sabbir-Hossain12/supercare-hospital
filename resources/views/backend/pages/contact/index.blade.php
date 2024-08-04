@@ -27,7 +27,8 @@
                   <th>Name</th>
                   <th>Email Address</th>
                   <th>Phone Number</th>
-                  <th>Service</th>
+                  <th>Subject</th>
+                  <th>Message</th>
                   <th>status</th>
                 </tr>
               </thead>
@@ -81,7 +82,10 @@
                     data: 'mobile'
                 },
                 {
-                    data: 'service'
+                    data: 'subject'
+                },
+                {
+                    data: 'message'
                 },
                 {
                     data: 'status'
