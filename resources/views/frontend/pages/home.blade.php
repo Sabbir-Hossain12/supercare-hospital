@@ -135,7 +135,7 @@
 		<!--/End Start schedule Area -->
 
 
-		<!-- Start Feautes -->
+		{{-- <!-- Start Feautes -->
 		<section class="Feautes section">
 			<div class="container">
 				<div class="row">
@@ -184,7 +184,7 @@
 				</div>
 			</div>
 		</section>
-		<!--/ End Feautes -->
+		<!--/ End Feautes --> --}}
 
 
 		<!-- Start Fun-facts -->
@@ -342,6 +342,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12 col-12">
@@ -615,7 +616,7 @@
 		</section>
 		<!-- End Appointment -->
 
-		<!-- Start Newsletter Area -->
+		{{-- <!-- Start Newsletter Area -->
 		<section class="newsletter section">
 			<div class="container">
 				<div class="row ">
@@ -641,7 +642,7 @@
 				</div>
 			</div>
 		</section>
-		<!-- /End Newsletter Area -->
+		<!-- /End Newsletter Area --> --}}
 
 @endsection
 
