@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        return view('backend.pages.service.index');
+        return view('backend.pages.services.index');
     }
 
     public function getData()
