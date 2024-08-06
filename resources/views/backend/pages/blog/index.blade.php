@@ -15,19 +15,20 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5>Blog Table</h5>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_Modal">Add Banner</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_Modal">Add Blog</button>
             </div>
 
 
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered" id="scheduleTable">
+                    <table class="table table-bordered" id="blogTable">
                         <thead>
                         <tr>
                             <th>#SL.</th>
-                            <th>Schedule Icon</th>
-                            <th>Schedule title 1</th>
-                            <th>Schedule title 2</th>
+                            <th>Blog Image</th>
+                            <th>Blog Title</th>
+                            <th>Blog Author</th>
+                            <th>Blog Date</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -44,12 +45,12 @@
     </div>
 
 
-    {{-- Create Service --}}
+    {{-- Create Blog --}}
     <div class="modal fade" id="create_Modal" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel3">Create New Service</h5>
+                    <h5 class="modal-title" id="exampleModalLabel3">Create New Blog</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -59,26 +60,29 @@
 
                         <div class="row">
                             <div class="mb-3">
-                                <label for="service_title" class="form-label">Schedule Title 1</label>
-                                <input type="text"  name="schedule_title_1" class="form-control" placeholder="Banner Title">
+                                <label for="service_title" class="form-label">Blog Author</label>
+                                <input type="text" value="{{Auth::user()->name}}" name="blog_author" class="form-control" placeholder="Blog Author">
                             </div>
+            
                             <div class="mb-3">
-                                <label for="service_title" class="form-label">Schedule Title 2</label>
-                                <input type="text"  name="schedules_title_2" class="form-control" placeholder="Banner Title">
-                            </div>
-
-
-                            <div class="mb-3">
-                                <label for="service_icon" class="form-label">Schedule Icon</label>
-                                <input type="file"  name="schedules_icon" class="form-control" placeholder="Banner Title">
+                                <label for="service_title" class="form-label">Blog Title</label>
+                                <input type="text"  name="blog_title" class="form-control" placeholder="Blog Title">
                             </div>
 
                             <div class="mb-3">
-                                <label for="service_desc" class="form-label">Schedule Description</label>
-                                <textarea name="schedules_desc" id="scheduleDesc"  class="form-control" cols="30" rows="10"></textarea>
+                                <label for="service_title" class="form-label">Blog Image</label>
+                                <input type="file"  name="blog_image" class="form-control">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="service_title" class="form-label">Blog Short Description</label>
+                                <textarea name="blog_short_desc" id=""  class="form-control" cols="30" rows="2"></textarea>
                             </div>
 
-
+                            <div class="mb-3">
+                                <label for="service_title" class="form-label">Blog Long Description</label>
+                                <textarea name="blog_long_desc" id="blogDesc"  class="form-control" cols="30" rows="10"></textarea>
+                            </div>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -113,24 +117,30 @@
                         <div class="row">
 
                             <div class="mb-3">
-                                <label for="service_title" class="form-label">Schedule Title 1</label>
-                                <input type="text"  name="schedule_title_1" id="schedule_title_1" class="form-control" placeholder="Banner Title">
-                            </div>
-                            <div class="mb-3">
-                                <label for="service_title" class="form-label">Schedule Title 2</label>
-                                <input type="text"  name="schedules_title_2" id="schedules_title_2" class="form-control" placeholder="Banner Title">
-                            </div>
-
-
-                            <div class="mb-3">
-                                <label for="service_icon" class="form-label">Schedule Icon</label>
-                                <input type="file" id="schedules_icon"  name="schedules_icon" class="form-control" placeholder="Banner Title">
-                                <img class="mt-2" id="scheduleIcon" src="" width="80" height="50" alt="">
+                                <label for="service_title" class="form-label">Blog Author</label>
+                                <input type="text" value="{{Auth::user()->name}}" name="blog_author" id="blog_author" class="form-control" placeholder="Blog Author">
                             </div>
 
                             <div class="mb-3">
-                                <label for="service_desc" class="form-label">Schedule Description</label>
-                                <textarea name="schedules_desc" id="scheduleDesc2"  class="form-control" cols="30" rows="10"></textarea>
+                                <label for="service_title" class="form-label">Blog Title</label>
+                                <input type="text"  name="blog_title" class="form-control" id="blog_title" placeholder="Blog Title">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="service_title" class="form-label">Blog Image</label>
+                                <input type="file"  name="blog_image" id="blog_image" class="form-control">
+                                
+                                <img src="" id="blogImg" alt="" width="120" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="service_title" class="form-label">Blog Short Description</label>
+                                <textarea name="blog_short_desc" id="blog_short_desc"  class="form-control" cols="30" rows="2"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="service_title" class="form-label">Blog Long Description</label>
+                                <textarea name="blog_long_desc" id="blogDesc2"  class="form-control" cols="30" rows="10"></textarea>
                             </div>
 
                             <div class="modal-footer">
@@ -162,7 +172,7 @@
             let jReq;
             // Ckeditor 5
             ClassicEditor
-                .create(document.querySelector('#scheduleDesc'))
+                .create(document.querySelector('#blogDesc'))
                 .then(newEditor => {
                     jReq = newEditor;
                 })
@@ -173,7 +183,7 @@
             let data;
             // Ckeditor 5
             ClassicEditor
-                .create(document.querySelector('#scheduleDesc2'))
+                .create(document.querySelector('#blogDesc2'))
                 .then(newEditor => {
                     data = newEditor;
                 })
@@ -184,13 +194,13 @@
 
 
             // show all data
-            let scheduleTable = $('#scheduleTable').DataTable({
+            let blogTable = $('#blogTable').DataTable({
                 order: [
                     [0, 'asc']
                 ],
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.get-schedule') }}",
+                ajax: "{{ route('admin.get-blog') }}",
                 // pageLength: 30,
 
                 columns: [
@@ -201,13 +211,16 @@
                         searchable: false
                     },
                     {
-                        data: 'scheduleImage'
+                        data: 'blogImage'
                     },
                     {
-                        data: 'schedule_title_1'
+                        data: 'blog_title'
                     },
                     {
-                        data: 'schedules_title_2'
+                        data: 'blog_author'
+                    },
+                    {
+                        data: 'blog_date'
                     },
 
 
@@ -230,14 +243,14 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('admin.schedule.status') }}",
+                    url: "{{ route('admin.blog.status') }}",
                     data: {
                         // '_token': token,
                         id: id,
                         status: status
                     },
                     success: function (res) {
-                        scheduleTable.ajax.reload();
+                        blogTable.ajax.reload();
 
                         if (res.status == 1) {
                             swal.fire(
@@ -260,18 +273,18 @@
                 })
             })
 
-            // Create Service
+            // Create Blog
             $('#createForm').submit(function (e) {
                 e.preventDefault();
-                const scheduleDesc = jReq.getData();
+                const blog_long_desc = jReq.getData();
                 let formData = new FormData(this);
-                formData.append('schedules_desc', scheduleDesc);
+                formData.append('blog_long_desc', blog_long_desc);
                 $.ajax({
                     type: "POST",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: "{{ route('admin.schedule.store') }}",
+                    url: "{{ route('admin.blog.store') }}",
                     data: formData,
                     processData: false,  // Prevent jQuery from processing the data
                     contentType: false,  // Prevent jQuery from setting contentType
@@ -280,7 +293,7 @@
                         if (res.message == 'success') {
                             $('#create_Modal').modal('hide');
                             $('#createForm')[0].reset();
-                            scheduleTable.ajax.reload();
+                            blogTable.ajax.reload();
 
                             swal.fire({
                                 title: "Success",
@@ -310,7 +323,7 @@
                     // headers: {
                     //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     // },
-                    url: "{{ url('admin/schedule') }}/" + id + "/edit",
+                    url: "{{ url('admin/blog') }}/" + id + "/edit",
                     processData: false,  // Prevent jQuery from processing the data
                     contentType: false,  // Prevent jQuery from setting contentType
                     success: function (res) {
@@ -320,11 +333,14 @@
 
                         // $('#editModal').modal('show');
                         $('#up_id').val(res.data.id);
-                        $('#schedule_title_1').val(res.data.schedule_title_1);
-                        $('#schedules_title_2').val(res.data.schedules_title_2);
-                        // $('#scheduleDesc2').val(res.data.schedules_desc);
-                        data.setData(res.data.schedules_desc);
-                        $('#scheduleIcon').attr('src','{{asset('')}}' + res.data.schedules_icon);
+                        
+                        $('#blog_title').val(res.data.blog_title);
+                        $('#blog_short_desc').val(res.data.blog_short_desc);
+                        $('#blog_author').val(res.data.blog_author);
+                       
+                       
+                        data.setData(res.data.blog_long_desc);
+                        $('#blogImg').attr('src','{{asset('')}}' + res.data.blog_image);
 
 
 
@@ -343,9 +359,9 @@
                 e.preventDefault();
 
                 let id = $('#up_id').val();
-                let schedules_desc=data.getData();
+                let blog_long_desc=data.getData();
                 let formData = new FormData(this);
-                formData.append('schedules_desc', schedules_desc);
+                formData.append('blog_long_desc', blog_long_desc);
 
 
                 $.ajax({
@@ -353,7 +369,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: "{{ url('admin/schedule') }}/" + id,
+                    url: "{{ url('admin/blog') }}/" + id,
                     data: formData,
                     processData: false,  // Prevent jQuery from processing the data
                     contentType: false,  // Prevent jQuery from setting contentType
@@ -361,13 +377,13 @@
 
                         swal.fire({
                             title: "Success",
-                            text: "Schedule Edited",
+                            text: "Blog Edited",
                             icon: "success"
                         })
 
                         $('#editModal').modal('hide');
                         $('#updateForm')[0].reset();
-                        scheduleTable.ajax.reload();
+                        blogTable.ajax.reload();
                     },
                     error: function (err) {
                         console.error('Error:', err);
@@ -382,7 +398,7 @@
             });
 
 
-            // Delete Banner
+            // Delete Blog
             $(document).on("click", "#deleteBtn", function () {
                 let id = $(this).data('id')
 
@@ -400,7 +416,7 @@
                             $.ajax({
                                 type: 'DELETE',
 
-                                url: "{{ url('admin/schedule') }}/" + id,
+                                url: "{{ url('admin/blog') }}/" + id,
                                 data: {
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -413,7 +429,7 @@
                                         icon: "success"
                                     });
 
-                                    scheduleTable.ajax.reload();
+                                    blogTable.ajax.reload();
                                 },
                                 error: function (err) {
                                     console.log('error')

@@ -4,20 +4,52 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class BlogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return view('backend.pages.blog.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function getData()
+    {
+        $blogs = Blog::all();
+
+
+        return DataTables::of($blogs)
+            ->addColumn('blogImage',function ($blog){
+                $imgPath= asset($blog->blog_image);
+                return '<img src="'.$imgPath.'" width="80" height="50" alt="">';
+            })
+
+            ->addColumn('status', function ($blog) {
+                if ($blog->status == 1) {
+                    return '<a class="status" id="status" href="javascript:void(0)"
+                        data-id="'.$blog->id.'" data-status="'.$blog->status.'"> <i
+                        class="fa-solid fa-toggle-on fa-2x"></i>
+                    </a>';
+                } else {
+                    return '<a class="status" id="status" href="javascript:void(0)"
+                        data-id="'.$blog->id.'" data-status="'.$blog->status.'"> <i
+                          class="fa-solid fa-toggle-off fa-2x" style="color: grey"></i>
+                    </a>';
+                }
+            })
+            ->addColumn('action', function ($blog) {
+                return '<div class="d-flex gap-3"> <a class="editButton btn btn-sm btn-primary" id="editButton" href="javascript:void(0)" data-id="'.$blog->id.'" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-edit"></i></a>
+
+                                                             <a class="btn btn-sm btn-danger" href="javascript:void(0)" data-id="'.$blog->id.'" id="deleteBtn"> <i class="fas fa-trash"></i></a>
+                                                           </div>';
+
+            })
+            ->rawColumns(['action', 'status','blogImage'])
+            ->addIndexColumn()
+            ->make(true);
+    }
+
+
     public function create()
     {
         //
@@ -28,7 +60,28 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $blog= new Blog();
+        $blog->blog_title = $request->blog_title;
+        $blog->blog_short_desc = $request->blog_short_desc;
+        $blog->blog_long_desc = $request->blog_long_desc;
+        $blog->blog_author = $request->blog_author;
+        $blog->blog_date = today();
+       
+
+
+        if ($request->hasFile('blog_image')) {
+            $file = $request->file('blog_image');
+            $filename = time() . $file->getClientOriginalName();
+            $file->move(public_path('/backend/image/blog/'), $filename);
+            $blog->blog_image = 'public/backend/image/blog/'.$filename;
+        }
+
+
+        $blog->save();
+
+        return response()->json(['message' => 'success'], 201);
     }
 
     /**
@@ -44,7 +97,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return response()->json(['message' => 'success', 'data' => $blog], 200);
     }
 
     /**
@@ -52,7 +105,31 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $blog->blog_title = $request->blog_title;
+        $blog->blog_short_desc = $request->blog_short_desc;
+        $blog->blog_long_desc = $request->blog_long_desc;
+        $blog->blog_author = $request->blog_author;
+        $blog->blog_date = today();
+
+
+        if ($request->hasFile('blog_image')) {
+            
+            if ($blog->blog_image &&   file_exists($blog->blog_image)) {
+                unlink($blog->blog_image);
+            }
+            $file = $request->file('blog_image');
+            $filename = time() . $file->getClientOriginalName();
+            $file->move(public_path('/backend/image/blog/'), $filename);
+            $blog->blog_image = 'public/backend/image/blog/'.$filename;
+        }
+
+
+
+
+        $blog->update();
+
+
+        return response()->json(['message' => 'success'], 200);
     }
 
     /**
@@ -60,6 +137,30 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+
+        $blog->delete();
+
+        return response()->json(['message' => 'success'], 200);
+
+    }
+
+    public function blogStatus(Request $request)
+    {
+
+        $id = $request->id;
+        $status = $request->status;
+
+
+        if ($status == 1) {
+            $stat = 0;
+        } else {
+            $stat = 1;
+        }
+
+        $page = Blog::findOrFail($id);
+        $page->status = $stat;
+        $page->save();
+
+        return response()->json(['message' => 'success', 'status' => $stat, 'id' => $id]);
     }
 }
