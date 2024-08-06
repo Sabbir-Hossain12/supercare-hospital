@@ -34,14 +34,29 @@ class BasicInfoController extends Controller
         $basicInfo->email_optional       = $request->email_optional;
         $basicInfo->address              = Str::trim($request->address);
         $basicInfo->address_optional     = Str::trim($request->address_optional);
+        $basicInfo->facebook_pixel       = Str::trim($request->facebook_pixel);
+        $basicInfo->google_analytics     = Str::trim($request->google_analytics);
+
         $basicInfo->facebook             = $request->facebook;
         $basicInfo->twitter              = $request->twitter;
         $basicInfo->youtube              = $request->youtube;
         $basicInfo->linkedin             = $request->linkedin;
         $basicInfo->instagram            = $request->instagram;
         $basicInfo->pinterest            = $request->pinterest;
-        $basicInfo->facebook_pixel       = Str::trim($request->facebook_pixel);
-        $basicInfo->google_analytics     = Str::trim($request->google_analytics);
+
+        $basicInfo->google_map           = $request->google_map;
+        $basicInfo->room_title           = $request->room_title;
+        $basicInfo->room_number          = $request->room_number;
+        $basicInfo->room_icons           = $request->room_icons;
+        $basicInfo->doctor_title         = $request->doctor_title;
+        $basicInfo->doctor_number        = $request->doctor_number;
+        $basicInfo->doctor_icons         = $request->doctor_icons;
+        $basicInfo->patient_title        = $request->patient_title;
+        $basicInfo->patient_number       = $request->patient_number;
+        $basicInfo->patient_icons        = $request->patient_icons;
+        $basicInfo->experience_title     = $request->experience_title;
+        $basicInfo->experience_number    = $request->experience_number;
+        $basicInfo->experience_icons     = $request->experience_icons;
 
 
         if( $request->file('logo') ){
@@ -79,14 +94,29 @@ class BasicInfoController extends Controller
         $basicInfo->email_optional       = $request->email_optional;
         $basicInfo->address              = Str::trim($request->address);
         $basicInfo->address_optional     = Str::trim($request->address_optional);
+        $basicInfo->facebook_pixel       = Str::trim($request->facebook_pixel);
+        $basicInfo->google_analytics     = Str::trim($request->google_analytics);
+
         $basicInfo->facebook             = $request->facebook;
         $basicInfo->twitter              = $request->twitter;
         $basicInfo->youtube              = $request->youtube;
         $basicInfo->linkedin             = $request->linkedin;
         $basicInfo->instagram            = $request->instagram;
         $basicInfo->pinterest            = $request->pinterest;
-        $basicInfo->facebook_pixel       = Str::trim($request->facebook_pixel);
-        $basicInfo->google_analytics     = Str::trim($request->google_analytics);
+
+        $basicInfo->google_map           = $request->google_map;
+        $basicInfo->room_title           = $request->room_title;
+        $basicInfo->room_number          = $request->room_number;
+        $basicInfo->room_icons           = $request->room_icons;
+        $basicInfo->doctor_title         = $request->doctor_title;
+        $basicInfo->doctor_number        = $request->doctor_number;
+        $basicInfo->doctor_icons         = $request->doctor_icons;
+        $basicInfo->patient_title        = $request->patient_title;
+        $basicInfo->patient_number       = $request->patient_number;
+        $basicInfo->patient_icons        = $request->patient_icons;
+        $basicInfo->experience_title     = $request->experience_title;
+        $basicInfo->experience_number    = $request->experience_number;
+        $basicInfo->experience_icons     = $request->experience_icons;
 
 
         if( $request->file('logo') ){

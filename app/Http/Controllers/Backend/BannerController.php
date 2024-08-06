@@ -28,6 +28,22 @@ class BannerController extends Controller
              ->addColumn('banner_img', function ($banner) {
                 return '<img src="'. asset($banner->banner_img) .'" alt="" style="width: 65px;">';
              })
+             ->addColumn('appointment_url', function ($banner) {
+                if( !is_null($banner->appointment_url) ){
+                    return '<span class="badge rounded-pill bg-label-primary">'. $banner->appointment_url .'</span>';
+                }
+                else{
+                    return '<span class="badge rounded-pill bg-label-danger">N/A</span>';
+                }
+             })
+             ->addColumn('learn_more_url', function ($banner) {
+                if( !is_null($banner->learn_more_url) ){
+                    return '<span class="badge rounded-pill bg-label-primary">'. $banner->learn_more_url .'</span>';
+                }
+                else{
+                    return '<span class="badge rounded-pill bg-label-danger">N/A</span>';
+                }
+             })
              ->addColumn('status', function ($banner) {
                 if ($banner->status == 1) {
                     return '<span class="badge bg-label-primary cursor-pointer" id="status" data-id="'.$banner->id.'" data-status="'.$banner->status.'">Active</span>';
@@ -48,7 +64,7 @@ class BannerController extends Controller
                 </div>';
             })
 
-            ->rawColumns(['banner_img', 'status', 'action'])
+            ->rawColumns(['banner_img', 'appointment_url' ,'learn_more_url', 'status', 'action'])
             ->make(true);
     }
 
@@ -64,7 +80,7 @@ class BannerController extends Controller
         $banner->title                       = $request->title;
         $banner->description                 = $request->description;
         $banner->appointment_url             = $request->appointment_url;
-        $banner->learn_url                   = $request->learn_url;
+        $banner->learn_more_url              = $request->learn_more_url;
         $banner->status                      = $request->status;
 
         if( $request->file('banner_img') ){
@@ -124,7 +140,7 @@ class BannerController extends Controller
         $banner->title                       = $request->title;
         $banner->description                 = $request->description;
         $banner->appointment_url             = $request->appointment_url;
-        $banner->learn_url                   = $request->learn_url;
+        $banner->learn_more_url              = $request->learn_more_url;
         $banner->status                      = $request->status;
 
         if( $request->file('banner_img') ){

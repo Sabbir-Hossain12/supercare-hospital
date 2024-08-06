@@ -26,7 +26,7 @@ class ContactController extends Controller
         return DataTables::of($contacts)
              ->addIndexColumn()
              ->addColumn('name', function ($contact) {
-                return '<span class="badge bg-label-info">'. $contact->name .'</span>';
+                return '<span class="badge bg-label-info">'. $contact->name .'</span> <br/>';
              })
              ->addColumn('status', function ($contact) {
                 if ($contact->status == 1) {
@@ -52,13 +52,13 @@ class ContactController extends Controller
         $contact->name                  = $request->name;
         $contact->email                 = $request->email;
         $contact->mobile                = $request->mobile;
-        $contact->service               = $request->service;
-        $contact->note                  = $request->note;
+        $contact->subject               = $request->subject;
+        $contact->message               = $request->message;
         $contact->status                = 1;
 
         $contact->save();
 
-        return response()->json(['message' => 'successfully Contact Created', 'status' => true], 200);
+        return redirect()->back();
     }
 
     /**

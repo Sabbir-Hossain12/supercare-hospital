@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('mobile');
-            $table->integer('service');
-            $table->text('note');
+            $table->string('subject');
+            $table->text('message');
+            $table->integer('status')->default(2)->comment('1=admin, 2=user');
             $table->timestamps();
         });
     }

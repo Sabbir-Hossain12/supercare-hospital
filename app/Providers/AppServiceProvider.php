@@ -3,17 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\models\Category;
-use App\models\About;
-use App\models\Banner;
-use App\models\Service;
-use App\models\PricePlan;
-use App\models\Professional;
-use App\models\Project;
-use App\models\Safety;
-use App\models\Logo;
-use App\models\Review;
-use App\models\BasicInfo;
+use App\Models\About;
+use App\Models\Banner;
+use App\Models\BasicInfo;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,14 +26,12 @@ class AppServiceProvider extends ServiceProvider
         {
             $about = About::getData();
             $banner = Banner::getData();
-            $professional = Professional::getData();
             $basicInfo = BasicInfo::getData();
 
 
             $view->with([
                 'banner' => $banner,
                 'about' => $about,
-                'professional' => $professional,
                 'basicInfo' => $basicInfo,
             ]);
         });

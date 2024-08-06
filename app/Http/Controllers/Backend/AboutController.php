@@ -28,7 +28,8 @@ class AboutController extends Controller
 
         $about->title               = $request->title;
         $about->description         = $request->description;
-        $about->url                 = $request->url;
+        $about->color               = $request->color;
+        $about->video               = $request->video;
 
         if( $request->file('image') ){
             $image = $request->file('image');

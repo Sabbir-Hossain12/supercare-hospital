@@ -3,7 +3,7 @@
     <div class="footer-top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-5 col-md-6 col-12">
                     <div class="single-footer">
                         <h2>About Us</h2>
                         <p>Lorem ipsum dolor sit am consectetur adipisicing elit do eiusmod tempor incididunt ut labore dolore magna.</p>
@@ -24,26 +24,25 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Services</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Our Cases</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Other Links</a></li>
+                                    <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
+                                    <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+                                    <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Services</a></li>
+                                    <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Doctors</a></li>
+                                    <li><a href="{{ url('/contact') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
                                 </ul>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12">
+                            {{-- <div class="col-lg-6 col-md-6 col-12">
                                 <ul>
                                     <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Consuling</a></li>
                                     <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Finance</a></li>
                                     <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Testimonials</a></li>
                                     <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQ</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="single-footer">
                         <h2>Open Hours</h2>
                         <p>Lorem ipsum dolor sit ame consectetur adipisicing elit do eiusmod tempor incididunt.</p>
@@ -54,7 +53,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
+
+                {{-- <div class="col-lg-3 col-md-6 col-12">
                     <div class="single-footer">
                         <h2>Newsletter</h2>
                         <p>subscribe to our newsletter to get allour news in your inbox.. Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
@@ -64,7 +64,8 @@
                             <button class="button"><i class="icofont icofont-paper-plane"></i></button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
+                
             </div>
         </div>
     </div>
@@ -75,7 +76,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="copyright-content">
-                        <p>© Copyright developed by <a href="https://www.danpite.tech/" target="_blank">danpite.tech </a> </p>
+                        <p>© Copyright developed by <a href="{{ env('APP_URL') }}" target="_blank">{{ env('APP_NAME') }}</a> </p>
                     </div>
                 </div>
             </div>

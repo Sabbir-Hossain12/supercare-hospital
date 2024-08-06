@@ -5,47 +5,50 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
-use App\Models\Service;
 use DataTables;
 
 class ProjectController extends Controller
 {
-    public function index_project_service(string $id)
+     /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        return view('backend.pages.service.project-section', compact('id'));
+        return view('backend.pages.projects.index');
     }
 
-
-    public function get_all_project_service(string $id)
+    public function getData(Request $request)
     {
-        // dd($id);
-        $projects = Project::where('service_id', $id)->get();
+        $projects = Project::all();
+
+        // dd($categories);
 
         return DataTables::of($projects)
-                ->addIndexColumn()
-                ->addColumn('service-name', function ($project){
-                    return Service::where('id', $project->service_id)->first()->title;
-                })
-                ->addColumn('project_img', function ($project) {
-                    return '<img src="'. asset($project->project_img) .'" alt="" style="width: 65px;">';
-                })
-                ->addColumn('name', function ($project) {
-                    return '<span class="badge bg-label-info">'. $project->name .'</span>';
-                })
-                ->addColumn('url', function ($project) {
-                    if( !is_null($project->url) ){
-                        return '<span class="badge rounded-pill bg-label-primary">'. $project->url .'</span>';
-                    }
-                    else{
-                        return '<span class="badge rounded-pill bg-label-danger">N/A</span>';
-                    }
-                })
-                ->addColumn('status', function ($project) {
-                    if ($project->status == 1) {
-                        return '<span class="badge bg-label-primary cursor-pointer" id="status" data-id="'.$project->id.'" data-status="'.$project->status.'">Active</span>';
-                    } else {
-                        return '<span class="badge bg-label-danger cursor-pointer" id="status" data-id="'.$project->id.'" data-status="'.$project->status.'">Deactive</span>';
-                    }
+            ->addIndexColumn()
+            ->addColumn('image', function ($project) {
+                return '<img src="'. asset($project->image) .'" alt="" style="width: 65px;">';
+            })
+            ->addColumn('social-links', function ($project) {
+                return '<div class="mb-1">
+                    <span class="badge mb-2 rounded-pill bg-label-primary">Facebook : '. $project->facebook .'</span> <br/>
+                    <span class="badge mb-2 rounded-pill bg-label-primary">Instagram : '. $project->instagram .'</span> <br/>
+                    <span class="badge mb-2 rounded-pill bg-label-primary">Twitter : '. $project->twitter .'</span> <br/>
+                    <span class="badge mb-2 rounded-pill bg-label-primary">Linkedin : '. $project->linkedin .'</span>
+                </div>';  
+            })
+            ->addColumn('client-details', function ($project) {
+                return '<div class="mb-1">
+                    <span class="badge mb-2 rounded-pill bg-label-primary">Category : '. $project->category .'</span> <br/>
+                    <span class="badge mb-2 rounded-pill bg-label-primary">Client Name : '. $project->client_name .'</span> <br/>
+                    <span class="badge mb-2 rounded-pill bg-label-primary">Age : '. $project->age .'</span>
+                </div>';  
+            })
+            ->addColumn('status', function ($project) {
+                if ($project->status == 1) {
+                    return '<span class="badge bg-label-primary cursor-pointer" id="status" data-id="'.$project->id.'" data-status="'.$project->status.'">Active</span>';
+                } else {
+                    return '<span class="badge bg-label-danger cursor-pointer" id="status" data-id="'.$project->id.'" data-status="'.$project->status.'">Deactive</span>';
+                }
             })
             ->addColumn('action', function ($project) {
                 return '
@@ -60,30 +63,39 @@ class ProjectController extends Controller
                 </div>';
             })
 
-            ->rawColumns(['name', 'url', 'project_img', 'service-name', 'status', 'action'])
+            ->rawColumns(['image', 'social-links', 'client-details', 'status', 'action'])
             ->make(true);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         // dd($request->all());
 
         $project = new Project();
 
-        $project->service_id          = $project->service_id;
-        $project->name                = $request->name;
-        $project->url                 = $request->url;
-        $project->status              = $request->status;
-        $project->service_id          = $request->service_id;
+        $project->title              = $request->title;
+        $project->category           = $request->category;
+        $project->client_name        = $request->client_name;
+        $project->age                = $request->age;
+        $project->description        = $request->description;
+        $project->facebook           = $request->facebook;
+        $project->instagram          = $request->instagram;
+        $project->twitter            = $request->twitter;
+        $project->linkedin           = $request->linkedin;
+        $project->status             = $request->status;
+        $project->date               = date('d-m-Y');
 
-        if( $request->file('project_img') ){
-            $project_img = $request->file('project_img');
+        if( $request->file('image') ){
+            $image = $request->file('image');
 
-            $imageName          = microtime('.') . '.' . $project_img->getClientOriginalExtension();
-            $imagePath          = 'public/backend/image/project/';
-            $project_img->move($imagePath, $imageName);
+            $imageName          = microtime('.') . '.' . $image->getClientOriginalExtension();
+            $imagePath          = 'public/backend/image/logo/';
+            $image->move($imagePath, $imageName);
 
-            $project->project_img   = $imagePath . $imageName;
+            $project->image   = $imagePath . $imageName;
         }
 
         $project->save();
@@ -130,25 +142,31 @@ class ProjectController extends Controller
 
         $project = Project::find($id);
 
-        $project->service_id          = $project->service_id;
-        $project->name                = $request->name;
-        $project->url                 = $request->url;
-        $project->status              = $request->status;
-        $project->service_id          = $request->service_id;
+        $project->title              = $request->title;
+        $project->category           = $request->category;
+        $project->client_name        = $request->client_name;
+        $project->age                = $request->age;
+        $project->description        = $request->description;
+        $project->facebook           = $request->facebook;
+        $project->instagram          = $request->instagram;
+        $project->twitter            = $request->twitter;
+        $project->linkedin           = $request->linkedin;
+        $project->status             = $request->status;
+        $project->date               = date('d-m-Y');
 
-        if( $request->file('project_img') ){
-            $project_img = $request->file('project_img');
 
+         if( $request->file('image') ){
+            $image = $request->file('image');
 
-            if( !is_null($project->project_img) && file_exists($project->project_img) ){
-                unlink($project->project_img);
+            if( !is_null($project->image) && file_exists($project->image) ){
+                unlink($project->image);
              }
 
-            $imageName          = microtime('.') . '.' . $project_img->getClientOriginalExtension();
-            $imagePath          = 'public/backend/image/project/';
-            $project_img->move($imagePath, $imageName);
+            $imageName          = microtime('.') . '.' . $image->getClientOriginalExtension();
+            $imagePath          = 'public/backend/image/logo/';
+            $image->move($imagePath, $imageName);
 
-            $project->project_img   = $imagePath . $imageName;
+            $project->image   = $imagePath . $imageName;
         }
 
         $project->save();
@@ -163,12 +181,11 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
 
-        if ( !is_null($project->project_img) ) {
-            if (file_exists($project->project_img)) {
-                unlink($project->project_img);
+        if ( !is_null($project->image) ) {
+            if (file_exists($project->image)) {
+                unlink($project->image);
             }
         }
-
         $project->delete();
 
         return response()->json(['message' => 'Project has been deleted.'], 200);

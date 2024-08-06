@@ -29,14 +29,26 @@
                 @csrf
             @endif
 
-                <div class="col mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title"
-                        placeholder="Write Here......"
-                        @if ( !empty( $about ) )
-                        value="{{ $about->title }}"
-                        @endif
-                        required>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title"
+                            placeholder="Write Here......"
+                            @if ( !empty( $about ) )
+                            value="{{ $about->title }}"
+                            @endif
+                            required>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label class="form-label" for="Color">Color</label>
+                        <input type="color" class="form-control" id="Color"
+                            name="color"
+                            @if ( !empty( $about ) )
+                               value="{{ $about->color }}"
+                            @endif
+                        >
+                    </div>
                 </div>
 
                 <div class="row">
@@ -50,13 +62,13 @@
                     </div>
 
                     <div class="col mb-3">
-                        <label class="form-label" for="url">URL</label>
+                        <label class="form-label" for="video">Video</label>
                         <input type="text" class="form-control"
-                            id="url"
-                            name="url"
-                            placeholder="Write url here...."
+                            id="video"
+                            name="video"
+                            placeholder="Paste video url here...."
                             @if ( !empty( $about ) )
-                               value="{{ $about->url }}"
+                               value="{{ $about->video }}"
                             @endif
                         >
                     </div>
@@ -173,7 +185,7 @@
                         '|', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor',
                         '|', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'code', 'underline',
                         '|', 'alignment', 'highlight', 'horizontalLine', 'specialCharacters',
-                        '-', // break point
+                        // '-',  break point
                         'link', 'uploadImage', 'blockQuote', 'insertTable', 'insertImage',
                         '|', 'bulletedList', 'numberedList', 'outdent', 'indent', 'alignment',
                     ],

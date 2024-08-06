@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
-
-    static public function getData(){
-        return self::where('status', '1')->get();
-    }
 }
