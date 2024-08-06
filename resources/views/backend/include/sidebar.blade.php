@@ -118,7 +118,7 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('admin.schedule.index') }}" class="menu-link">
+                    <a href="{{ route('admin.appointment.index') }}" class="menu-link">
                         <div data-i18n="Without menu">Manage Appointments</div>
                     </a>
                 </li>
@@ -134,7 +134,7 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('admin.schedule.index') }}" class="menu-link">
+                    <a href="{{ route('admin.blog.index') }}" class="menu-link">
                         <div data-i18n="Without menu">Manage Blogs</div>
                     </a>
                 </li>

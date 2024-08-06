@@ -43,7 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['Is_admin', 'auth']], functi
     //____  Schedule  ____//    
     Route::resource('schedule', ScheduleController::class)->names('admin.schedule');
     Route::get('/get-schedule',[ScheduleController::class,'getData'])->name('admin.get-schedule');
-    Route::post('/schedule/status',[ScheduleController::class,'adminServiceStatus'])->name('admin.schedule.status');
+    Route::post('/schedule/status',[ScheduleController::class,'serviceStatus'])->name('admin.schedule.status');
     
     
     //____  Service  ____//
@@ -51,16 +51,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['Is_admin', 'auth']], functi
     Route::get('/get-service',[ServiceController::class,'getData'])->name('admin.get-service');
     Route::post('/service/status',[ServiceController::class,'serviceStatus'])->name('admin.service.status');
 
+    //___Appointment___//
+    Route::resource('appointment', AppointmentController::class)->names('admin.appointment');
+    Route::get('/get-appointment',[AppointmentController::class,'getData'])->name('admin.get-appointment');
+    Route::post('/appointment/status',[AppointmentController::class,'appointmentStatus'])->name('admin.appointment.status');
     
     //____Blog___//
     Route::resource('blog', BlogController::class)->names('admin.blog');
     Route::get('/get-blog',[BlogController::class,'getData'])->name('admin.get-blog');
     Route::post('/blog/status',[BlogController::class,'adminBlogStatus'])->name('admin.blog.status');
     
-    //___Appointment___//
-    Route::resource('appointment', AppointmentController::class)->names('admin.appointment');
-    Route::get('/get-appointment',[AppointmentController::class,'getData'])->name('admin.get-appointment');
-    Route::post('/appointment/status',[AppointmentController::class,'adminAppointmentStatus'])->name('admin.appointment.status');
+   
     
 });
 

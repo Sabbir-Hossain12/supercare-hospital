@@ -21,7 +21,7 @@ return new class extends Migration
             
             $table->string('date');
             $table->string('message')->nullable();
-            $table->string('status')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

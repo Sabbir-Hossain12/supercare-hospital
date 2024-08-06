@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @push('meta-title')
-    Dashboard | Schedule Section
+    Dashboard | Blog Section
 @endpush
 
 @push('add-css')
@@ -14,7 +14,7 @@
     <div class="row">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5>Service Table</h5>
+                <h5>Blog Table</h5>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_Modal">Add Banner</button>
             </div>
 
@@ -61,12 +61,12 @@
                             <div class="mb-3">
                                 <label for="service_title" class="form-label">Schedule Title 1</label>
                                 <input type="text"  name="schedule_title_1" class="form-control" placeholder="Banner Title">
-                            </div> 
+                            </div>
                             <div class="mb-3">
                                 <label for="service_title" class="form-label">Schedule Title 2</label>
                                 <input type="text"  name="schedules_title_2" class="form-control" placeholder="Banner Title">
                             </div>
-                            
+
 
                             <div class="mb-3">
                                 <label for="service_icon" class="form-label">Schedule Icon</label>
@@ -78,7 +78,7 @@
                                 <textarea name="schedules_desc" id="scheduleDesc"  class="form-control" cols="30" rows="10"></textarea>
                             </div>
 
-                            
+
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -154,7 +154,7 @@
 
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
     <script src="{{asset('https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js')}}"></script>
-    
+
 
     <script>
 
@@ -180,8 +180,8 @@
                 .catch(error => {
                     console.error(error);
                 });
-            
-            
+
+
 
             // show all data
             let scheduleTable = $('#scheduleTable').DataTable({
@@ -202,10 +202,10 @@
                     },
                     {
                         data: 'scheduleImage'
-                    }, 
+                    },
                     {
                         data: 'schedule_title_1'
-                    }, 
+                    },
                     {
                         data: 'schedules_title_2'
                     },
@@ -324,9 +324,9 @@
                         $('#schedules_title_2').val(res.data.schedules_title_2);
                         // $('#scheduleDesc2').val(res.data.schedules_desc);
                         data.setData(res.data.schedules_desc);
-                       $('#scheduleIcon').attr('src','{{asset('')}}' + res.data.schedules_icon);
-                        
-                       
+                        $('#scheduleIcon').attr('src','{{asset('')}}' + res.data.schedules_icon);
+
+
 
 
                     },
@@ -346,7 +346,7 @@
                 let schedules_desc=data.getData();
                 let formData = new FormData(this);
                 formData.append('schedules_desc', schedules_desc);
-                
+
 
                 $.ajax({
                     type: "POST",

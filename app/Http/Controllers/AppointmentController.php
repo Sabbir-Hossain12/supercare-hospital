@@ -4,62 +4,59 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class AppointmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return view('backend.pages.appointment.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function getData()
     {
-        //
+        $appointments = Appointment::all();
+
+
+        return DataTables::of($appointments)
+
+            ->addColumn('status', function ($appointment) {
+                if ($appointment->status == 1) {
+                    return '<a class="status" id="status" href="javascript:void(0)"
+                        data-id="'.$appointment->id.'" data-status="'.$appointment->status.'"> <i
+                        class="fa-solid fa-toggle-on fa-2x"></i>
+                    </a>';
+                } else {
+                    return '<a class="status" id="status" href="javascript:void(0)"
+                        data-id="'.$appointment->id.'" data-status="'.$appointment->status.'"> <i
+                          class="fa-solid fa-toggle-off fa-2x" style="color: grey"></i>
+                    </a>';
+                }
+            })
+          
+            ->rawColumns(['status'])
+            ->addIndexColumn()
+            ->make(true);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function appointmentStatus(Request $request)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Appointment $appointment)
-    {
-        //
-    }
+        $id = $request->id;
+        $status = $request->status;
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Appointment $appointment)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Appointment $appointment)
-    {
-        //
-    }
+        if ($status == 1) {
+            $stat = 0;
+        } else {
+            $stat = 1;
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Appointment $appointment)
-    {
-        //
+        $page = Appointment::findOrFail($id);
+        $page->status = $stat;
+        $page->save();
+
+        return response()->json(['message' => 'success', 'status' => $stat, 'id' => $id]);
     }
+   
 }
