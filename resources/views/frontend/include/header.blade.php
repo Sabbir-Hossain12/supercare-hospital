@@ -23,8 +23,8 @@
 						<div class="col-lg-6 col-md-7 col-12 offset-lg-6 offset-md-5">
 							<!-- Top Contact -->
 							<ul class="top-contact">
-								<li><i class="fa fa-phone"></i>+880 1234 56789</li>
-								<li><i class="fa fa-envelope"></i><a href="mailto:support@yourmail.com">support@yourmail.com</a></li>
+								<li><i class="fa fa-phone"></i>{{$basicInfo->phone}}</li>
+								<li><i class="fa fa-envelope"></i><a href="mailto:support@yourmail.com">{{$basicInfo->email}}</a></li>
 							</ul>
 							<!-- End Top Contact -->
 						</div>
@@ -60,8 +60,9 @@
 									<nav class="navigation">
 										<ul class="nav menu">
 											<li class="active"><a href="{{ url('/') }}">Home </a></li>
-											<li><a href="#">Doctos </a></li>
+											<li><a href="#">Doctors </a></li>
 											<li><a href="#">Services </a></li>
+											<li><a href="#">Blogs </a></li>
 											<li><a href="{{ url('/contact') }}">Contact Us</a></li>
 										</ul>
 									</nav>
@@ -70,7 +71,7 @@
 							</div>
 							<div class="col-lg-2 col-12">
 								<div class="get-quote">
-									<a href="appointment.html" class="btn">Book Appointment</a>
+									<a href="#appointment" class="btn">Book Appointment</a>
 								</div>
 							</div>
 						</div>

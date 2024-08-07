@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Schedule;
 use Illuminate\Support\ServiceProvider;
 use App\Models\About;
 use App\Models\Banner;
@@ -24,17 +25,30 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function($view)
         {
-            $about = About::getData();
-            $banner = Banner::getData();
+            
             $basicInfo = BasicInfo::getData();
 
 
             $view->with([
-                'banner' => $banner,
-                'about' => $about,
                 'basicInfo' => $basicInfo,
             ]);
         });
+
+
+        view()->composer('frontend.pages.home', function($view)
+        {
+
+            $sliders= Banner:: where('status',1)->get();
+            $schedules= Schedule::where('status',1)->get();
+
+            $view->with([
+                'sliders' => $sliders,
+                'schedules' => $schedules
+            ]);
+        });
+        
+        
+        
 
 
     }
