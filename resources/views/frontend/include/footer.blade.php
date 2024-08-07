@@ -9,11 +9,11 @@
                         <p>Lorem ipsum dolor sit am consectetur adipisicing elit do eiusmod tempor incididunt ut labore dolore magna.</p>
                         <!-- Social -->
                         <ul class="social">
-                            <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                            <li><a href="#"><i class="icofont-google-plus"></i></a></li>
-                            <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                            <li><a href="#"><i class="icofont-vimeo"></i></a></li>
-                            <li><a href="#"><i class="icofont-pinterest"></i></a></li>
+                            <li><a href="{{$basicInfo->facebook}}"><i class="icofont-facebook"></i></a></li>
+{{--                            <li><a href="{{$basicInfo->}}"><i class="icofont-google-plus"></i></a></li>--}}
+                            <li><a href="{{$basicInfo->twitter}}"><i class="icofont-twitter"></i></a></li>
+{{--                            <li><a href="{{$basicInfo->}}"><i class="icofont-vimeo"></i></a></li>--}}
+                            <li><a href="{{$basicInfo->pinterest}}"><i class="icofont-pinterest"></i></a></li>
                         </ul>
                         <!-- End Social -->
                     </div>
@@ -25,7 +25,7 @@
                             <div class="col-lg-6 col-md-6 col-12">
                                 <ul>
                                     <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
-                                    <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+{{--                                    <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>--}}
                                     <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Services</a></li>
                                     <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Doctors</a></li>
                                     <li><a href="{{ url('/contact') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
@@ -76,7 +76,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="copyright-content">
-                        <p>© Copyright developed by <a href="{{ env('APP_URL') }}" target="_blank">{{ env('APP_NAME') }}</a> </p>
+                        <p>© Copyright All Rights Reserved <a href="{{ env('APP_URL') }}" target="_blank">{{ env('APP_NAME') }}</a> </p>
                     </div>
                 </div>
             </div>
