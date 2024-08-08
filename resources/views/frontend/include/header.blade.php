@@ -59,11 +59,11 @@
 								<div class="main-menu">
 									<nav class="navigation">
 										<ul class="nav menu">
-											<li class="active"><a href="{{ url('/') }}">Home </a></li>
-											<li><a href="#">Doctors </a></li>
+											<li class=" @if(request()->is('/')) active  @endif"><a href="{{ url('/') }}">Home </a></li>
+											<li class="@if(request()->is('doctors')) active  @endif"><a href="#">Doctors </a></li>
 											<li><a href="#">Services </a></li>
-											<li><a href="#">Blogs </a></li>
-											<li><a href="{{ url('/contact') }}">Contact Us</a></li>
+											<li class="@if(request()->routeIs('blogList')) active  @endif"><a href="{{route('blogList')}}">Blogs </a></li>
+											<li class="@if(request()->is('contact')) active  @endif"><a href="{{ url('/contact') }}">Contact Us</a></li>
 										</ul>
 									</nav>
 								</div>

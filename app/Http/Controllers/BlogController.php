@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -156,11 +157,36 @@ class BlogController extends Controller
         } else {
             $stat = 1;
         }
+        
 
         $page = Blog::findOrFail($id);
         $page->status = $stat;
         $page->save();
 
         return response()->json(['message' => 'success', 'status' => $stat, 'id' => $id]);
+    }
+
+    public function blogList()
+    {
+        
+        $blogs=Blog::where('status',1)->latest()->simplePaginate(6);
+        $recentBlogs=Blog::where('status',1)->latest()->limit(3)->get();
+
+        return view('frontend.pages.blog.index',compact(['blogs','recentBlogs']));
+    }
+
+    public function blogDetail(Blog $blog)
+    {
+        $recentBlogs=Blog::where('status',1)->latest()->limit(3)->get();
+        $comments= Comment::where('blog_id',$blog->id)->simplePaginate(8);
+        return view('frontend.pages.blog.details', compact(['blog','recentBlogs','comments']));
+    }
+
+    public function blogSearch(Request $request)
+    {
+//        dd($request->all());
+        $blog_title=$request->blog_title;
+        $blogs=Blog::where('status',1)->where('blog_title','like','%'.$blog_title.'%')->latest()->simplePaginate(6);
+        return view('frontend.pages.blog.search',compact('blogs'));
     }
 }

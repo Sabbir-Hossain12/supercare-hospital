@@ -303,59 +303,32 @@
 						<div class="section-title">
 							<h2>Keep up with Our Most Recent Medical News.</h2>
 							<img src="{{ asset('public/frontend/img/section-img.png') }}" alt="#">
-							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+{{--							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>--}}
 						</div>
 					</div>
 				</div>
 				<div class="row">
+                    @foreach($blogs as $blog)
 					<div class="col-lg-4 col-md-6 col-12">
 						<!-- Single Blog -->
 						<div class="single-news">
 							<div class="news-head">
-								<img src="{{ asset('public/frontend/img/blog1.jpg') }}" alt="#">
+								<img src="{{ asset( $blog->blog_image ) }}" alt="#">
 							</div>
+                            @php
+                                $blogDate = \Carbon\Carbon::parse($blog->blog_date);
+                            @endphp
 							<div class="news-body">
 								<div class="news-content">
-									<div class="date">22 Aug, 2020</div>
-									<h2><a href="blog-single.html">We have annnocuced our new product.</a></h2>
-									<p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
+									<div class="date">{{ $blogDate->diffForHumans()}}</div>
+									<h2><a href="{{route('blogDetail',$blog->id)}}">{{$blog->blog_title}}</a></h2>
+									<p class="text">{{$blog->blog_short_desc}}</p>
 								</div>
 							</div>
 						</div>
 						<!-- End Single Blog -->
 					</div>
-					<div class="col-lg-4 col-md-6 col-12">
-						<!-- Single Blog -->
-						<div class="single-news">
-							<div class="news-head">
-								<img src="{{ asset('public/frontend/img/blog2.jpg') }}" alt="#">
-							</div>
-							<div class="news-body">
-								<div class="news-content">
-									<div class="date">15 Jul, 2020</div>
-									<h2><a href="blog-single.html">Top five way for solving teeth problems.</a></h2>
-									<p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
-								</div>
-							</div>
-						</div>
-						<!-- End Single Blog -->
-					</div>
-					<div class="col-lg-4 col-md-6 col-12">
-						<!-- Single Blog -->
-						<div class="single-news">
-							<div class="news-head">
-								<img src="{{ asset('public/frontend/img/blog3.jpg') }}" alt="#">
-							</div>
-							<div class="news-body">
-								<div class="news-content">
-									<div class="date">05 Jan, 2020</div>
-									<h2><a href="blog-single.html">We provide highly business soliutions.</a></h2>
-									<p class="text">Lorem ipsum dolor a sit ameti, consectetur adipisicing elit, sed do eiusmod tempor incididunt sed do incididunt sed.</p>
-								</div>
-							</div>
-						</div>
-						<!-- End Single Blog -->
-					</div>
+                    @endforeach
 				</div>
 			</div>
 		</section>
@@ -441,7 +414,7 @@
 		</section>
 		<!-- End Appointment -->
 
-    
+            
 
 @endsection
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,21 +28,13 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-      
-       
-        $comment = new Comment();
-        $comment->blog_id = $request->blog_id;
-        $comment->name = $request->name;
-        $comment->message = $request->message;
-        $comment->save();
-        
-        return redirect()->back()->with(['message'=>'Comment added successfully']);
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Comment $comment)
+    public function show(Department $department)
     {
         //
     }
@@ -50,7 +42,7 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comment $comment)
+    public function edit(Department $department)
     {
         //
     }
@@ -58,7 +50,7 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Department $department)
     {
         //
     }
@@ -66,7 +58,7 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comment $comment)
+    public function destroy(Department $department)
     {
         //
     }

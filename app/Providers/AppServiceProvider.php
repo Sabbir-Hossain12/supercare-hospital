@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
             $schedules= Schedule::where('status',1)->get();
             $services= Service::where('status',1)->get();
             $projects= Project::where('status',1)->get();
-            $blogs= Blog::where('status',1)->get();
+            $blogs= Blog::where('status',1)->limit(6)->get();
             $about= About::first();
             
 
