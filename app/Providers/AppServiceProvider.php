@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Blog;
+use App\Models\Department;
 use App\Models\Project;
 use App\Models\Schedule;
 use App\Models\Service;
@@ -46,17 +47,17 @@ class AppServiceProvider extends ServiceProvider
             $projects= Project::where('status',1)->get();
             $blogs= Blog::where('status',1)->limit(6)->get();
             $about= About::first();
+            $departments= Department::where('status',1)->get();
             
 
             $view->with([
                 'sliders' => $sliders,
                 'schedules' => $schedules,
-
                 'services' => $services,
                 'projects' => $projects,
                 'blogs' => $blogs,
-
                 'about' => $about,
+                'departments' => $departments,
 
             ]);
         });

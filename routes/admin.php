@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -60,6 +61,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['Is_admin', 'auth']], functi
     Route::resource('blog', BlogController::class)->names('admin.blog');
     Route::get('/get-blog',[BlogController::class,'getData'])->name('admin.get-blog');
     Route::post('/blog/status',[BlogController::class,'blogStatus'])->name('admin.blog.status');
+    
+    //____Department___//
+    Route::resource('/department', DepartmentController::class)->names('admin.department');
+    Route::get('/get-department',[DepartmentController::class,'getData'])->name('admin.get-department');
+    Route::post('/department/status',[DepartmentController::class,'departmentStatus'])->name('admin.department.status');
     
 });
 

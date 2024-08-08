@@ -370,10 +370,11 @@
 									<div class="form-group">
                                         
                                             <select class="form-control form-select" name="department" id="department">
-                                                <option value="">Department</option>
-                                                <option value="Department 1">Department 1</option>
-                                                <option value="Department 2">Department 2</option>
-                                                <option value="Department 3">Department 3</option>
+                                                <option value="" disabled selected>Department</option>
+                                                @foreach($departments as $department) 
+                                                <option value="{{$department->department_name}}">{{$department->department_name}}</option>
+                                               
+                                                @endforeach
                                             </select>
 											
 										
