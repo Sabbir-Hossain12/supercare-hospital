@@ -9,27 +9,27 @@
 
 @section('body-content')
 
-		<!-- Slider Area -->
+		<!-- Slider Area [Done] -->
 		<section class="slider">
 			<div class="hero-slider">
-				<!-- Start Single Slider -->
+				<!-- Start Single Slider  -->
                 @foreach($sliders as $slider) 
-				<div class="single-slider" style="background-image:url('{{ asset($slider->banner_img) }}')">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-7">
-								<div class="text">
-									<h1>{!! $slider->title !!}</h1>
-									<p>{{$slider->description}} </p>
-									<div class="button">
-										<a href="{{$slider->appointment_url}}" class="btn">Get Appointment</a>
-										<a href="{{$slider->learn_more_url}}" class="btn primary">Learn More</a>
+					<div class="single-slider" style="background-image:url('{{ asset($slider->banner_img) }}')">
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-7">
+									<div class="text">
+										<h1>{!! $slider->title !!}</h1>
+										<p>{{$slider->description}} </p>
+										<div class="button">
+											<a href="{{$slider->appointment_url}}" class="btn">Get Appointment</a>
+											<a href="{{$slider->learn_more_url}}" class="btn primary">Learn More</a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
                 @endforeach
 			
 			</div>
@@ -37,7 +37,7 @@
 		<!--/ End Slider Area -->
 
 
-		<!-- Start Schedule Area -->
+		<!-- Start Schedule Area [Done] -->
 		<section class="schedule">
 			<div class="container">
 				<div class="schedule-inner">
@@ -53,49 +53,14 @@
 									<div class="single-content">
 										<span>{{$schedule->schedule_title_1}}</span>
 										<h4>{{$schedule->schedules_title_2}}</h4>
-										<p class="text-light" style="color: white !important">{!!$schedule->schedules_desc!!}</p>
-{{--										<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>--}}
+
+										<div class="text-light schedule_desc">{!!$schedule->schedules_desc!!}</div>
+										{{-- <a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a> --}}
 									</div>
 								</div>
 							</div>
 						</div>
                         @endforeach
-{{--						<div class="col-lg-4 col-md-6 col-12">--}}
-{{--							<!-- single-schedule -->--}}
-{{--							<div class="single-schedule middle">--}}
-{{--								<div class="inner">--}}
-{{--									<div class="icon">--}}
-{{--										<i class="icofont-prescription"></i>--}}
-{{--									</div>--}}
-{{--									<div class="single-content">--}}
-{{--										<span>Fusce Porttitor</span>--}}
-{{--										<h4>Doctors Timetable</h4>--}}
-{{--										<p>Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus convallis sodales.</p>--}}
-{{--										<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>--}}
-{{--									</div>--}}
-{{--								</div>--}}
-{{--							</div>--}}
-{{--						</div>--}}
-{{--						<div class="col-lg-4 col-md-12 col-12">--}}
-{{--							<!-- single-schedule -->--}}
-{{--							<div class="single-schedule last">--}}
-{{--								<div class="inner">--}}
-{{--									<div class="icon">--}}
-{{--										<i class="icofont-ui-clock"></i>--}}
-{{--									</div>--}}
-{{--									<div class="single-content">--}}
-{{--										<span>Donec luctus</span>--}}
-{{--										<h4>Opening Hours</h4>--}}
-{{--										<ul class="time-sidual">--}}
-{{--											<li class="day">Monday - Fridayp <span>8.00-20.00</span></li>--}}
-{{--											<li class="day">Saturday <span>9.00-18.30</span></li>--}}
-{{--											<li class="day">Monday - Thusday <span>9.00-15.00</span></li>--}}
-{{--										</ul>--}}
-{{--										<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>--}}
-{{--									</div>--}}
-{{--								</div>--}}
-{{--							</div>--}}
-{{--						</div>--}}
 					</div>
 				</div>
 			</div>
@@ -155,17 +120,30 @@
 		<!--/ End Feautes --> --}}
 
 
-		<!-- Start Fun-facts -->
+		<!-- Start Fun-facts [Done] -->
 		<div id="fun-facts" class="fun-facts section overlay" style="background: #45AC8B!important;">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Start Single Fun -->
 						<div class="single-fun">
-							<i class="icofont icofont-home"></i>
+							<i class="icofont @if( !empty($basicInfo->room_icons) ) {{ $basicInfo->room_icons }} @else icofont-home @endif"></i>
 							<div class="content">
-								<span class="counter">3468</span>
-								<p>Hospital Rooms</p>
+								<span class="counter">@if( !empty($basicInfo->room_number) ) {{ $basicInfo->room_number }} @else 3468 @endif</span>
+								<p>@if( !empty($basicInfo->room_icons) ) {{ $basicInfo->room_title }} @else Hospital Rooms @endif</p>
+							</div>
+						</div>
+						<!-- End Single Fun -->
+					</div>
+
+					
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Fun -->
+						<div class="single-fun">
+							<i class="icofont @if( !empty($basicInfo->doctor_icons) ) {{ $basicInfo->doctor_icons }} @else icofont-user-alt-3 @endif"></i>
+							<div class="content">
+								<span class="counter">@if( !empty($basicInfo->doctor_number) ) {{ $basicInfo->doctor_number }} @else 557 @endif</span>
+								<p>@if( !empty($basicInfo->doctor_title) ) {{ $basicInfo->doctor_title }} @else Specialist Doctors @endif </p>
 							</div>
 						</div>
 						<!-- End Single Fun -->
@@ -173,10 +151,10 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Start Single Fun -->
 						<div class="single-fun">
-							<i class="icofont icofont-user-alt-3"></i>
+							<i class="@if( !empty($basicInfo->patient_icons) ) {{ $basicInfo->patient_icons }} @else icofont-simple-smile @endif"></i>
 							<div class="content">
-								<span class="counter">557</span>
-								<p>Specialist Doctors</p>
+								<span class="counter">@if( !empty($basicInfo->patient_number) ) {{ $basicInfo->patient_number }} @else 4379 @endif</span>
+								<p>@if( !empty($basicInfo->patient_title) ) {{ $basicInfo->patient_title }} @else Happy Patients @endif </p>
 							</div>
 						</div>
 						<!-- End Single Fun -->
@@ -184,21 +162,10 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Start Single Fun -->
 						<div class="single-fun">
-							<i class="icofont-simple-smile"></i>
+							<i class="icofont @if( !empty($basicInfo->experience_icons) ) {{ $basicInfo->experience_icons }} @else icofont-table @endif"></i>
 							<div class="content">
-								<span class="counter">4379</span>
-								<p>Happy Patients</p>
-							</div>
-						</div>
-						<!-- End Single Fun -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Start Single Fun -->
-						<div class="single-fun">
-							<i class="icofont icofont-table"></i>
-							<div class="content">
-								<span class="counter">32</span>
-								<p>Years of Experience</p>
+								<span class="counter">@if( !empty($basicInfo->experience_number) ) {{ $basicInfo->experience_number }} @else 32 @endif</span>
+								<p>@if( !empty($basicInfo->experience_title) ) {{ $basicInfo->experience_title }} @else Years of Experience @endif</p>
 							</div>
 						</div>
 						<!-- End Single Fun -->
@@ -225,36 +192,26 @@
 					<div class="col-lg-6 col-12">
 						<!-- Start Choose Left -->
 						<div class="choose-left">
-							<h3>Who We Are</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra antege vel est lobortis, a commodo magna rhoncus. In quis nisi non emet quam pharetra commodo. </p>
+							<h3>{{ $about->title }}</h3>
 
-							<ul>
-								<li>Maecenas vitae luctus nibh. </li>
-								<li>Duis massa massa.</li>
-								<li>Aliquam feugiat interdum.</li>
-								<li>Maecenas vitae luctus nibh. </li>
-								<li>Duis massa massa.</li>
-								<li>Aliquam feugiat interdum.</li>
-							</ul>
-							{{-- <div class="row">
-								<div class="col-lg-6">
-									<ul class="list">
-										<li><i class="fa fa-caret-right"></i>Maecenas vitae luctus nibh. </li>
-										<li><i class="fa fa-caret-right"></i>Duis massa massa.</li>
-										<li><i class="fa fa-caret-right"></i>Aliquam feugiat interdum.</li>
-									</ul>
-								</div>
-								<div class="col-lg-6">
-									<ul class="list">
-										<li><i class="fa fa-caret-right"></i>Maecenas vitae luctus nibh. </li>
-										<li><i class="fa fa-caret-right"></i>Duis massa massa.</li>
-										<li><i class="fa fa-caret-right"></i>Aliquam feugiat interdum.</li>
-									</ul>
-								</div>
-							</div> --}}
+							<div class="about-contents">
+								{{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra antege vel est lobortis, a commodo magna rhoncus. In quis nisi non emet quam pharetra commodo. </p>
+
+								<ul>
+									<li>Maecenas vitae luctus nibh. </li>
+									<li>Duis massa massa.</li>
+									<li>Aliquam feugiat interdum.</li>
+									<li>Maecenas vitae luctus nibh. </li>
+									<li>Duis massa massa.</li>
+									<li>Aliquam feugiat interdum.</li>
+								</ul> --}}
+
+								{!! $about->description !!}
+							</div>
 						</div>
 						<!-- End Choose Left -->
 					</div>
+
 					<div class="col-lg-6 col-12">
 						<!-- Start Choose Rights -->
 						<div class="choose-right" style="background-image: url({{ asset('public/frontend/img/video-bg.jpg') }});">
