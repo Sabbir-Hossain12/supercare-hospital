@@ -6,7 +6,7 @@
                 <div class="col-lg-5 col-md-6 col-12">
                     <div class="single-footer">
                         <h2>About Us</h2>
-                        <p>Lorem ipsum dolor sit am consectetur adipisicing elit do eiusmod tempor incididunt ut labore dolore magna.</p>
+                        <p>{{ $basicInfo->address ?? "Lorem ipsum dolor sit am consectetur adipisicing elit do eiusmod tempor incididunt ut labore dolore magna" }}</p>
                         <!-- Social -->
                         <ul class="social">
                             <li><a href="{{$basicInfo->facebook}}"><i class="icofont-facebook"></i></a></li>
@@ -25,32 +25,19 @@
                             <div class="col-lg-6 col-md-6 col-12">
                                 <ul>
                                     <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
-{{--                                    <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>--}}
-                                    <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Services</a></li>
-                                    <li><a href="{{ url('/') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Doctors</a></li>
+                                    <li><a href="{{ url('/service') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Services</a></li>
+                                    <li><a href="{{ url('/doctor') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Doctors</a></li>
                                     <li><a href="{{ url('/contact') }}"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>
                                 </ul>
                             </div>
-                            {{-- <div class="col-lg-6 col-md-6 col-12">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Consuling</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Finance</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Testimonials</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQ</a></li>
-                                </ul>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="single-footer">
-                        <h2>Open Hours</h2>
-                        <p>Lorem ipsum dolor sit ame consectetur adipisicing elit do eiusmod tempor incididunt.</p>
-                        <ul class="time-sidual">
-                            <li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
-                            <li class="day">Saturday <span>9.00-18.30</span></li>
-                            <li class="day">Monday - Thusday <span>9.00-15.00</span></li>
-                        </ul>
+                        <h2>{{$schedule->schedules_title_2 ?? 'Opening Hours'}}</h2>
+{{--                        <p>{{$schedule[0]->schedules_desc}}</p>--}}
+                    <div class="text-light">  {!!  $schedule->schedules_desc ?? '24/7' !!} </div>
                     </div>
                 </div>
 

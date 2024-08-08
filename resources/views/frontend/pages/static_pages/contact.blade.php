@@ -10,14 +10,14 @@
 @section('body-content')
 
 <!-- Breadcrumbs -->
-<div class="breadcrumbs overlay">
+<div class="breadcrumbs overlay" style="background-image: url({{ asset('public/frontend/img/bread-bg.jpg') }});">
     <div class="container">
         <div class="bread-inner">
             <div class="row">
                 <div class="col-12">
                     <h2>Contact Us</h2>
                     <ul class="bread-list">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ url('/') }}">Home</a></li>
                         <li><i class="icofont-simple-right"></i></li>
                         <li class="active">Contact Us</li>
                     </ul>
@@ -34,14 +34,14 @@
     <div class="container">
         <div class="inner">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact-us-left">
-                        <!--Start Google-map -->
-                        <iframe class="google_maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4341.028551296312!2d90.37009060428387!3d23.805959849389655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b5097024c1%3A0xda38a77770f5ab46!2sSHAH%20ALI%20PLAZA!5e0!3m2!1sen!2sbd!4v1722776392014!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <!--/End Google-map -->
-                    </div>
-                </div>
-                <div class="col-lg-6">
+{{--                <div class="col-lg-6">--}}
+{{--                    <div class="contact-us-left">--}}
+{{--                        <!--Start Google-map -->--}}
+{{--                        <iframe class="google_maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4341.028551296312!2d90.37009060428387!3d23.805959849389655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b5097024c1%3A0xda38a77770f5ab46!2sSHAH%20ALI%20PLAZA!5e0!3m2!1sen!2sbd!4v1722776392014!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>--}}
+{{--                        <!--/End Google-map -->--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+                <div class="col-lg-12">
                     <div class="contact-us-form">
                         <h2>Contact With Us</h2>
                         <p>If you have any questions please fell free to contact with us.</p>
@@ -88,43 +88,7 @@
                 </div>
             </div>
         </div>
-        <div class="contact-info">
-            <div class="row">
-                <!-- single-info -->
-                <div class="col-lg-4 col-12 ">
-                    <div class="single-info">
-                        <i class="icofont icofont-ui-call"></i>
-                        <div class="content">
-                            <h3>+(000) 1234 56789</h3>
-                            <p>info@company.com</p>
-                        </div>
-                    </div>
-                </div>
-                <!--/End single-info -->
-                <!-- single-info -->
-                <div class="col-lg-4 col-12 ">
-                    <div class="single-info">
-                        <i class="icofont-google-map"></i>
-                        <div class="content">
-                            <h3>2 Fir e Brigade Road</h3>
-                            <p>Chittagonj, Lakshmipur</p>
-                        </div>
-                    </div>
-                </div>
-                <!--/End single-info -->
-                <!-- single-info -->
-                <div class="col-lg-4 col-12 ">
-                    <div class="single-info">
-                        <i class="icofont icofont-wall-clock"></i>
-                        <div class="content">
-                            <h3>Mon - Sat: 8am - 5pm</h3>
-                            <p>Sunday Closed</p>
-                        </div>
-                    </div>
-                </div>
-                <!--/End single-info -->
-            </div>
-        </div>
+       
     </div>
 </section>
 <!-- End Contact Us -->

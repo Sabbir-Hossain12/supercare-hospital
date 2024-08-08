@@ -501,12 +501,11 @@ Preloader Area CSS
 	top:0;
 	height:100%;
 	width:100%;
-	background:#45AC8B;
+	background:#45ac8bb5;
 	opacity:1;
 }
 /* Bread Crumbs */
 .breadcrumbs {
-	background-image: url('../img/bread-bg.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

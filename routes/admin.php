@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\BasicInfoController;
 use App\Http\Controllers\Backend\ProjectController;
+use App\Http\Controllers\Backend\DoctorController;
 
 
 
@@ -29,6 +31,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['Is_admin', 'auth']], functi
     Route::resource('contact', ContactController::class)->names('admin.contact');
     Route::get('/get-contact',[ContactController::class,'getData'])->name('admin.get-contact');
     Route::post('/contact/status',[ContactController::class,'adminContactStatus'])->name('admin.contact.status');
+
+    //____  Doctor  ____//
+    Route::resource('doctor', DoctorController::class)->names('admin.doctor');
+    Route::get('/get-doctor',[DoctorController::class,'getData'])->name('admin.get-doctor');
+    Route::post('/doctor/status',[DoctorController::class,'adminDoctorStatus'])->name('admin.doctor.status');
     
     //____ Project  ____//
     Route::resource('project', ProjectController::class)->names('admin.project');
@@ -60,6 +67,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['Is_admin', 'auth']], functi
     Route::resource('blog', BlogController::class)->names('admin.blog');
     Route::get('/get-blog',[BlogController::class,'getData'])->name('admin.get-blog');
     Route::post('/blog/status',[BlogController::class,'blogStatus'])->name('admin.blog.status');
+    
+    //____Department___//
+    Route::resource('/department', DepartmentController::class)->names('admin.department');
+    Route::get('/get-department',[DepartmentController::class,'getData'])->name('admin.get-department');
+    Route::post('/department/status',[DepartmentController::class,'departmentStatus'])->name('admin.department.status');
     
 });
 

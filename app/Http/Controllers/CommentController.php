@@ -28,11 +28,12 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+      
+       
         $comment = new Comment();
         $comment->blog_id = $request->blog_id;
         $comment->name = $request->name;
         $comment->message = $request->message;
-        $comment->comment = $request->comment;
         $comment->save();
         
         return redirect()->back()->with(['message'=>'Comment added successfully']);
