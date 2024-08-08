@@ -68,7 +68,6 @@
 		<!--/End Start schedule Area -->
 
 
-
         <!-- Start Fun-facts [Done] -->
         <div id="fun-facts" class="fun-facts section overlay" style="background: #45AC8B!important;">
             <div class="container">
@@ -124,7 +123,6 @@
             </div>
         </div>
         <!--/ End Fun-facts-->
-
 
 
 		<!-- Start Why choose [Done] -->
@@ -188,8 +186,9 @@
 		</section>
 		<!--/ End Why choose -->
 
+
 		<!-- Start Call to action [Done] -->
-		<section class="call-action overlay" data-stellar-background-ratio="0.5">
+		<section class="call-action overlay" data-stellar-background-ratio="0.5" style="	background-image:url({{ asset('public/frontend/img/call-bg.jpg') }});">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-12">
@@ -198,7 +197,6 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor dictum turpis nec gravida.</p>
 							<div class="button">
 								<a href="{{ url('/contact') }}" class="btn">Contact Now</a>
-								<a href="{{ url('/contact') }}" class="btn second">Learn More<i class="fa fa-long-arrow-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -206,6 +204,7 @@
 			</div>
 		</section>
 		<!--/ End Call to action -->
+
 
 		<!-- Start portfolio [Done] -->
 		<section class="portfolio section" >

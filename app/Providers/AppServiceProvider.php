@@ -32,10 +32,12 @@ class AppServiceProvider extends ServiceProvider
         { 
             $basicInfo = BasicInfo::getData();
             $services  = Service::where('status',1)->get();
+            $schedule = Schedule::where('status',1)->where('id', 7)->first();
 
             $view->with([
                 'basicInfo' => $basicInfo,
                 'services' => $services,
+                'schedule' => $schedule,
             ]);
         });
 

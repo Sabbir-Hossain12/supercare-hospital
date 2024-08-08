@@ -18,6 +18,7 @@ Route::get('/project-details/{id}', function ($id) {
 Route::view('/contact', 'frontend.pages.static_pages.contact');
 Route::view('/doctor', 'frontend.pages.static_pages.doctor');
 Route::view('/service', 'frontend.pages.static_pages.service');
+Route::view('/appointment', 'frontend.pages.static_pages.appointment');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

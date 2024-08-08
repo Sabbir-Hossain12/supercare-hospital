@@ -13,11 +13,11 @@
         <div class="bread-inner">
             <div class="row">
                 <div class="col-12">
-                    <h2>Docotr</h2>
+                    <h2>Doctor</h2>
                     <ul class="bread-list">
                         <li><a href="{{ url('/') }}">Home</a></li>
                         <li><i class="icofont-simple-right"></i></li>
-                        <li class="active">Doctor</li>
+                        <li class="active">Doctors</li>
                     </ul>
                 </div>
             </div>

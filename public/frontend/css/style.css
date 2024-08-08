@@ -1077,7 +1077,6 @@ body{
 	Start Call to action CSS
 =================================*/
 .call-action{
-	background-image:url('img/call-bg.jpg');
 	background-size:cover;
 	background-position:center;
 	position:relative;

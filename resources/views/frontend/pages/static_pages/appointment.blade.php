@@ -2,7 +2,7 @@
 
 
 @push('meta-title')
-    {{ env('APP_NAME') }} | Service Page
+    {{ env('APP_NAME') }} | Appointment Book Page
 @endpush
 
 
@@ -13,11 +13,11 @@
         <div class="bread-inner">
             <div class="row">
                 <div class="col-12">
-                    <h2>Service</h2>
+                    <h2>Appointment Book</h2>
                     <ul class="bread-list">
                         <li><a href="{{ url('/') }}">Home</a></li>
                         <li><i class="icofont-simple-right"></i></li>
-                        <li class="active">Services</li>
+                        <li class="active">Appointment Book</li>
                     </ul>
                 </div>
             </div>
@@ -25,35 +25,6 @@
     </div>
 </div>
 <!-- End Breadcrumbs -->
-
-
-<!-- Start service [Done] -->
-<section class="services section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>We Offer Different Services To Improve Your Health</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            @foreach($services as $service) 
-            <div class="col-lg-4 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="{{$service->service_icon}}"></i>
-                    <h4><a href="">{{$service->service_title}}</a></h4>
-                    <p>{{$service->service_desc}} </p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            @endforeach
-            
-        </div>
-    </div>
-</section>
-<!--/ End service -->
 
 
 <!-- Start Appointment -->
