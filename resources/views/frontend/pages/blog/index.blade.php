@@ -50,8 +50,8 @@
                         @endforeach
                         
 {{--  Pagination --}}
-                            <div class="col-12">
-                          {{$blogs->links()}}
+                            <div class="mt-5 col-12 justify-content-center">
+                        <span class="text-center">  {{$blogs->links()}} </span>
                             </div>
                       
                     </div>
