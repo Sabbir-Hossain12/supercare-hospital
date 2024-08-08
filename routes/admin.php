@@ -61,7 +61,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['Is_admin', 'auth']], functi
     Route::get('/get-blog',[BlogController::class,'getData'])->name('admin.get-blog');
     Route::post('/blog/status',[BlogController::class,'blogStatus'])->name('admin.blog.status');
     
-   
-    
 });
 

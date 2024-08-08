@@ -277,7 +277,7 @@
                                 <label for="patient_icons" class="form-label">Icons</label>
                                 <input type="text" class="form-control" id="patient_icons" name="patient_icons"
                                     @if ( !empty( $basicInfo ) )
-                                        value="{{ $basicInfo->doctor_icons }}"
+                                        value="{{ $basicInfo->patient_icons }}"
                                     @endif
                                 >
                             </div>

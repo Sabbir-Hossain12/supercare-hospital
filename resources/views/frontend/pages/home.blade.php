@@ -9,27 +9,27 @@
 
 @section('body-content')
 
-		<!-- Slider Area -->
+		<!-- Slider Area [Done] -->
 		<section class="slider">
 			<div class="hero-slider">
-				<!-- Start Single Slider -->
+				<!-- Start Single Slider  -->
                 @foreach($sliders as $slider) 
-				<div class="single-slider" style="background-image:url('{{ asset($slider->banner_img) }}')">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-7">
-								<div class="text">
-									<h1>{!! $slider->title !!}</h1>
-									<p>{{$slider->description}} </p>
-									<div class="button">
-										<a href="{{$slider->appointment_url}}" class="btn">Get Appointment</a>
-										<a href="{{$slider->learn_more_url}}" class="btn primary">Learn More</a>
+					<div class="single-slider" style="background-image:url('{{ asset($slider->banner_img) }}')">
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-7">
+									<div class="text">
+										<h1>{!! $slider->title !!}</h1>
+										<p>{{$slider->description}} </p>
+										<div class="button">
+											<a href="{{$slider->appointment_url}}" class="btn">Get Appointment</a>
+											<a href="{{$slider->learn_more_url}}" class="btn primary">Learn More</a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
                 @endforeach
 			
 			</div>
@@ -37,7 +37,7 @@
 		<!--/ End Slider Area -->
 
 
-		<!-- Start Schedule Area -->
+		<!-- Start Schedule Area [Done] -->
 		<section class="schedule">
 			<div class="container">
 				<div class="schedule-inner">
@@ -53,49 +53,14 @@
 									<div class="single-content">
 										<span>{{$schedule->schedule_title_1}}</span>
 										<h4>{{$schedule->schedules_title_2}}</h4>
-										<p class="text-light" style="color: white !important">{!!$schedule->schedules_desc!!}</p>
-{{--										<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>--}}
+
+										<div class="text-light schedule_desc">{!!$schedule->schedules_desc!!}</div>
+										{{-- <a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a> --}}
 									</div>
 								</div>
 							</div>
 						</div>
                         @endforeach
-{{--						<div class="col-lg-4 col-md-6 col-12">--}}
-{{--							<!-- single-schedule -->--}}
-{{--							<div class="single-schedule middle">--}}
-{{--								<div class="inner">--}}
-{{--									<div class="icon">--}}
-{{--										<i class="icofont-prescription"></i>--}}
-{{--									</div>--}}
-{{--									<div class="single-content">--}}
-{{--										<span>Fusce Porttitor</span>--}}
-{{--										<h4>Doctors Timetable</h4>--}}
-{{--										<p>Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus convallis sodales.</p>--}}
-{{--										<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>--}}
-{{--									</div>--}}
-{{--								</div>--}}
-{{--							</div>--}}
-{{--						</div>--}}
-{{--						<div class="col-lg-4 col-md-12 col-12">--}}
-{{--							<!-- single-schedule -->--}}
-{{--							<div class="single-schedule last">--}}
-{{--								<div class="inner">--}}
-{{--									<div class="icon">--}}
-{{--										<i class="icofont-ui-clock"></i>--}}
-{{--									</div>--}}
-{{--									<div class="single-content">--}}
-{{--										<span>Donec luctus</span>--}}
-{{--										<h4>Opening Hours</h4>--}}
-{{--										<ul class="time-sidual">--}}
-{{--											<li class="day">Monday - Fridayp <span>8.00-20.00</span></li>--}}
-{{--											<li class="day">Saturday <span>9.00-18.30</span></li>--}}
-{{--											<li class="day">Monday - Thusday <span>9.00-15.00</span></li>--}}
-{{--										</ul>--}}
-{{--										<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>--}}
-{{--									</div>--}}
-{{--								</div>--}}
-{{--							</div>--}}
-{{--						</div>--}}
 					</div>
 				</div>
 			</div>
@@ -119,6 +84,7 @@
                         </div>
                         <!-- End Single Fun -->
                     </div>
+
 
 
                     <div class="col-lg-3 col-md-6 col-12">
@@ -157,7 +123,8 @@
                 </div>
             </div>
         </div>
-        <!--/ End Fun-facts -->
+        <!--/ End Fun-facts-->
+
 
 
 		<!-- Start Why choose -->
@@ -168,7 +135,7 @@
 						<div class="section-title">
 							<h2>We Offer Different Services To Improve Your Health</h2>
 							<img src="{{ asset('public/frontend/img/section-img.png') }}" alt="#">
-							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+{{--							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>--}}
 						</div>
 					</div>
 				</div>
@@ -176,21 +143,28 @@
 					<div class="col-lg-6 col-12">
 						<!-- Start Choose Left -->
 						<div class="choose-left">
-							<h3>Who We Are</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra antege vel est lobortis, a commodo magna rhoncus. In quis nisi non emet quam pharetra commodo. </p>
+							<h3>{{ $about->title ?? ''}}</h3>
 
-							<ul>
-								<li>Maecenas vitae luctus nibh. </li>
-								<li>Duis massa massa.</li>
-								<li>Aliquam feugiat interdum.</li>
-								<li>Maecenas vitae luctus nibh. </li>
-								<li>Duis massa massa.</li>
-								<li>Aliquam feugiat interdum.</li>
-							</ul>
-							
+
+							<div class="about-contents">
+								{{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra antege vel est lobortis, a commodo magna rhoncus. In quis nisi non emet quam pharetra commodo. </p>
+
+								<ul>
+									<li>Maecenas vitae luctus nibh. </li>
+									<li>Duis massa massa.</li>
+									<li>Aliquam feugiat interdum.</li>
+									<li>Maecenas vitae luctus nibh. </li>
+									<li>Duis massa massa.</li>
+									<li>Aliquam feugiat interdum.</li>
+								</ul> --}}
+
+								{!! $about->description ?? '' !!}
+							</div>
+
 						</div>
 						<!-- End Choose Left -->
 					</div>
+
 					<div class="col-lg-6 col-12">
 						<!-- Start Choose Rights -->
 						<div class="choose-right" style="background-image: url({{ asset('public/frontend/img/video-bg.jpg') }});">
@@ -467,33 +441,7 @@
 		</section>
 		<!-- End Appointment -->
 
-		{{-- <!-- Start Newsletter Area -->
-		<section class="newsletter section">
-			<div class="container">
-				<div class="row ">
-					<div class="col-lg-6  col-12">
-						<!-- Start Newsletter Form -->
-						<div class="subscribe-text ">
-							<h6>Sign up for newsletter</h6>
-							<p class="">Cu qui soleat partiendo urbanitas. Eum aperiri indoctum eu,<br> homero alterum.</p>
-						</div>
-						<!-- End Newsletter Form -->
-					</div>
-					<div class="col-lg-6  col-12">
-						<!-- Start Newsletter Form -->
-						<div class="subscribe-form ">
-							<form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-								<input name="EMAIL" placeholder="Your email address" class="common-input" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Your email address'" required="" type="email">
-								<button class="btn">Subscribe</button>
-							</form>
-						</div>
-						<!-- End Newsletter Form -->
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- /End Newsletter Area --> --}}
+    
 
 @endsection
 
