@@ -183,7 +183,7 @@
 					<div class="col-lg-12">
 						<div class="section-title">
 							<h2>We Offer Different Services To Improve Your Health</h2>
-							<img src="{{ asset('public/frontend/img/section-img.png') }}" alt="#">
+							{{-- <img src="{{ asset('public/frontend/img/section-img.png') }}" alt="#"> --}}
 							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
 						</div>
 					</div>
