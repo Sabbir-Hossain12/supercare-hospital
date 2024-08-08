@@ -39,6 +39,26 @@ class AppointmentController extends Controller
             ->make(true);
     }
 
+
+    public function store(Request $request)
+    {
+//        dd($request->all());
+        
+
+        $appointment = new Appointment();
+        $appointment->name = $request->name;
+        $appointment->email = $request->email;
+        $appointment->phone = $request->phone;
+        $appointment->department = $request->department;
+        $appointment->message = $request->message;
+        $appointment->date = today();
+        $appointment->status = 1;
+        $appointment->save();
+        
+        return redirect()->back()->with(['message'=>'Appointment Submitted Successfully']);
+        
+    }
+
     public function appointmentStatus(Request $request)
     {
 
@@ -58,5 +78,7 @@ class AppointmentController extends Controller
 
         return response()->json(['message' => 'success', 'status' => $stat, 'id' => $id]);
     }
+    
+    
    
 }
