@@ -15,7 +15,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5>Service Table</h5>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_Modal">Add Banner</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_Modal">Add Service</button>
             </div>
 
 
