@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 
 @push('meta-title')
-        Dashboard | Project Section
+        Dashboard | Doctor Section
 @endpush
 
 @push('add-css')
@@ -14,21 +14,20 @@
  <div class="row">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5>Project Table</h5>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_Modal">Add Project</button>
+            <h5>Doctor Table</h5>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_Modal">Add Doctor</button>
         </div>
 
 
         <div class="card-body">
           <div class="table-responsive text-nowrap">
-            <table class="table table-bordered" id="projectTables">
+            <table class="table table-bordered" id="doctorTables">
               <thead>
                 <tr>
                   <th>#SL.</th>
                   <th>Image</th>
                   <th>Title</th>
-                  <th>Social Url</th>
-                  <th>Client Bio</th>
+                  <th>Doctor Category</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -50,7 +49,7 @@
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel3">Create New Project</h5>
+            <h5 class="modal-title" id="exampleModalLabel3">Create New Doctor</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -58,63 +57,21 @@
                 <form id="createForm" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="row">
-                        <div class="col mb-3">
-                           <label for="category" class="form-label">Category</label>
-                           <input type="text" id="category" name="category" class="form-control" placeholder="category.....">
-                        </div>
-
-                        <div class="col mb-3">
-                            <label for="client_name" class="form-label">Client Name</label>
-                            <input type="text" id="client_name" name="client_name" class="form-control" placeholder="Client Name.....">
-                        </div>
-
-                        <div class="col mb-3">
-                            <label for="age" class="form-label">Client Age</label>
-                            <input type="number" id="age" name="age" class="form-control" placeholder="Age.....">
-                        </div>
+                    <div class="col mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <input type="text" id="category" name="category" class="form-control" placeholder="category.....">
                     </div>
 
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label for="title" class="form-label">Project Title</label>
-                            <input type="text" id="title" name="title" class="form-control" placeholder="Title.....">
-                        </div>
-
-                        <div class="col mb-3">
-                            <label for="image" class="form-label">Project Image</label>
-                            <input class="form-control" type="file" name="image" id="image" required>
-                        </div>
+                    <div class="col mb-3">
+                        <label for="title" class="form-label">Doctor Title</label>
+                        <input type="text" id="title" name="title" class="form-control" placeholder="Title.....">
                     </div>
 
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label for="facebook" class="form-label">Facebook</label>
-                            <input type="text" id="facebook" name="facebook" class="form-control" placeholder="Facebook Links.....">
-                        </div>
-
-                        <div class="col mb-3">
-                            <label for="instagram" class="form-label">Instagram</label>
-                            <input type="text" id="instagram" name="instagram" class="form-control" placeholder="Instagram Links.....">
-                            </div>
+                    <div class="col mb-3">
+                        <label for="image" class="form-label">Doctor Image</label>
+                        <input class="form-control" type="file" name="image" id="image" required>
                     </div>
 
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label for="twitter" class="form-label">Twitter</label>
-                            <input type="text" id="twitter" name="twitter" class="form-control" placeholder="Twitter Links.....">
-                        </div>
-
-                        <div class="col mb-3">
-                            <label for="linkedin" class="form-label">Linkedin</label>
-                            <input type="text" id="linkedin" name="linkedin" class="form-control" placeholder="Linkedin Links.....">
-                            </div>
-                    </div>
-
-                    <div>
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Write description....."></textarea>
-                    </div>
 
                     <div class="col mb-3">
                         <label for="status" class="form-label">Status</label>
@@ -152,65 +109,21 @@
 
                     <input type="text" id="up_id" name="id" hidden>
 
-                    <div class="row">
-                        <div class="col mb-3">
-                           <label for="up_category" class="form-label">Category</label>
-                           <input type="text" id="up_category" name="category" class="form-control" placeholder="category.....">
-                        </div>
-
-                        <div class="col mb-3">
-                            <label for="up_client_name" class="form-label">Client Name</label>
-                            <input type="text" id="up_client_name" name="client_name" class="form-control" placeholder="Client Name.....">
-                        </div>
-
-                        <div class="col mb-3">
-                            <label for="up_age" class="form-label">Client Age</label>
-                            <input type="number" id="up_age" name="age" class="form-control" placeholder="Age.....">
-                        </div>
+                    <div class="col mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <input type="text" id="up_category" name="category" class="form-control" placeholder="category.....">
                     </div>
 
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label for="up_title" class="form-label">Project Title</label>
-                            <input type="text" id="up_title" name="title" class="form-control" placeholder="Title.....">
-                        </div>
-
-                        <div class="col mb-3">
-                            <label for="image" class="form-label">Project Image</label>
-                            <input class="form-control" type="file" name="image" id="image">
-
-                            <div id="imageShow"></div>
-                        </div>
+                    <div class="col mb-3">
+                        <label for="title" class="form-label">Doctor Title</label>
+                        <input type="text" id="up_title" name="title" class="form-control" placeholder="Title.....">
                     </div>
 
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label for="up_facebook" class="form-label">Facebook</label>
-                            <input type="text" id="up_facebook" name="facebook" class="form-control" placeholder="Facebook Links.....">
-                        </div>
+                    <div class="col mb-3">
+                        <label for="image" class="form-label">Doctor Image</label>
+                        <input class="form-control" type="file" name="image" id="image" required>
 
-                        <div class="col mb-3">
-                            <label for="up_instagram" class="form-label">Instagram</label>
-                            <input type="text" id="up_instagram" name="instagram" class="form-control" placeholder="Instagram Links.....">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label for="up_twitter" class="form-label">Twitter</label>
-                            <input type="text" id="up_twitter" name="twitter" class="form-control" placeholder="Twitter Links.....">
-                        </div>
-
-                        <div class="col mb-3">
-                            <label for="up_linkedin" class="form-label">Linkedin</label>
-                            <input type="text" id="up_linkedin" name="linkedin" class="form-control" placeholder="Linkedin Links.....">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="up_description" class="form-label">Description</label>
-
-                        <textarea class="form-control" name="description" id="up_description" rows="3" placeholder="Write description....." hidden></textarea>
+                        <div id="imageShow"></div>
                     </div>
 
                     <div class="col mb-3">
@@ -247,13 +160,13 @@
      $(document).ready(function(){
 
         // show all data
-        let projectTables = $('#projectTables').DataTable({
+        let doctorTables = $('#doctorTables').DataTable({
             order: [
                 [0, 'asc']
             ],
             processing: true,
             serverSide: true,
-            ajax: "{{ route('admin.get-project') }}",
+            ajax: "{{ route('admin.get-doctor') }}",
             // pageLength: 30,
 
             columns: [
@@ -261,7 +174,7 @@
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
                     orderable: false,
-                    searchable: false
+                    searchable: false 
                 },
                 {
                     data: 'image'
@@ -270,10 +183,7 @@
                     data: 'title'
                 },
                 {
-                    data: 'social-links'
-                },
-                {
-                    data: 'client-details'
+                    data: 'category'
                 },
                 {
                     data: 'status'
@@ -294,14 +204,14 @@
 
             $.ajax({
                 type: "POST",
-                url: "{{ route('admin.project.status') }}",
+                url: "{{ route('admin.doctor.status') }}",
                 data: {
                     // '_token': token,
                     id: id,
                     status: status
                 },
                 success: function (res) {
-                    projectTables.ajax.reload();
+                    doctorTables.ajax.reload();
 
                     if (res.status == 1) {
                         swal.fire(
@@ -336,7 +246,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{ route('admin.project.store') }}",
+                url: "{{ route('admin.doctor.store') }}",
                 data: formData,
                 processData: false,  // Prevent jQuery from processing the data
                 contentType: false,  // Prevent jQuery from setting contentType
@@ -345,7 +255,7 @@
                     if (res.status === true) {
                         $('#create_Modal').modal('hide');
                         $('#createForm')[0].reset();
-                        projectTables.ajax.reload();
+                        doctorTables.ajax.reload();
 
                         swal.fire({
                             title: "Success",
@@ -376,7 +286,7 @@
                 // headers: {
                 //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 // },
-                url: "{{ url('admin/project') }}/" + id + "/edit",
+                url: "{{ url('admin/doctor') }}/" + id + "/edit",
                 processData: false,  // Prevent jQuery from processing the data
                 contentType: false,  // Prevent jQuery from setting contentType
                 success: function (res) {
@@ -386,43 +296,12 @@
                     $('#up_id').val(data.id);
                     $('#up_title').val(data.title);
                     $('#up_category').val(data.category);
-                    $('#up_client_name').val(data.client_name);
-                    $('#up_age').val(data.age);
-                    $('#up_facebook').val(data.facebook);
-                    $('#up_instagram').val(data.instagram);
-                    $('#up_twitter').val(data.twitter);
-                    $('#up_linkedin').val(data.linkedin);
                     $('#imageShow').html('');
                     $('#imageShow').append(`
                         <img src={{ asset("`+ data.image +`") }} alt="" style="width: 75px;">
                     `);
                     $('#up_status').val(data.status);
-                    
-
-                    // Destroy any existing CKEditor instance before creating a new one
-                    if (window.editor) {
-                        window.editor.destroy()
-                            .then(() => {
-                                ClassicEditor.create(document.querySelector('#up_description'))
-                                    .then(editor => {
-                                        window.editor = editor;
-                                        editor.setData(data.description);
-                                    })
-                                    .catch(error => {
-                                        console.error(error);
-                                    });
-                            });
-                    } else {
-                        ClassicEditor.create(document.querySelector('#up_description'))
-                            .then(editor => {
-                                window.editor = editor;
-                                editor.setData(data.description);
-                            })
-                            .catch(error => {
-                                console.error(error);
-                            });
-                    }
-
+                
                 },
                 error: function (error) {
                     console.log('error');
@@ -444,7 +323,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{ url('admin/project') }}/" + id,
+                url: "{{ url('admin/doctor') }}/" + id,
                 data: formData,
                 processData: false,  // Prevent jQuery from processing the data
                 contentType: false,  // Prevent jQuery from setting contentType
@@ -452,13 +331,13 @@
 
                     swal.fire({
                         title: "Success",
-                        text: "Project Edited",
+                        text: "Doctor Edited",
                         icon: "success"
                     })
 
                     $('#editModal').modal('hide');
                     $('#updateForm')[0].reset();
-                    projectTables.ajax.reload();
+                    doctorTables.ajax.reload();
                 },
                 error: function (err) {
                     console.error('Error:', err);
@@ -491,7 +370,7 @@
                     $.ajax({
                         type: 'DELETE',
 
-                        url: "{{ url('admin/project') }}/" + id,
+                        url: "{{ url('admin/doctor') }}/" + id,
                         data: {
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -504,7 +383,7 @@
                                 icon: "success"
                             });
 
-                            projectTables.ajax.reload();
+                            doctorTables.ajax.reload();
                         },
                         error: function (err) {
                             console.log('error')
@@ -521,18 +400,5 @@
     });
 
  </script>
-
-    <script src="{{asset('https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js')}}"></script>
-
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#description'))
-            .then(newEditor => {
-                jReq = newEditor;
-            })
-            .catch(error => {
-                console.error(error);
-        });
-    </script>
 
 @endpush

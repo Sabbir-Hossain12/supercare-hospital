@@ -92,6 +92,25 @@
           </li>
         </ul>
       </li>
+
+
+      <!--  Doctor Section  -->
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bxs-phone-call"></i>
+          <div data-i18n="Layouts">Doctor</div>
+        </a>
+
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ route('admin.doctor.index') }}" class="menu-link">
+              <div data-i18n="Without menu">Manage Doctor</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+
         {{--   Schedule    --}}
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

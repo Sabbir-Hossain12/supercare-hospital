@@ -127,7 +127,7 @@
 
 
 
-		<!-- Start Why choose -->
+		<!-- Start Why choose [Done] -->
 		<section class="why-choose section" >
 			<div class="container">
 				<div class="row">
@@ -167,7 +167,7 @@
 
 					<div class="col-lg-6 col-12">
 						<!-- Start Choose Rights -->
-						<div class="choose-right" style="background-image: url({{ asset('public/frontend/img/video-bg.jpg') }});">
+						<div class="choose-right" style="background-image: url({{ asset($about->image) }});">
 							<div class="video-image">
 								<!-- Video Animation -->
 								<div class="promo-video">
@@ -178,7 +178,7 @@
 									</div>
 								</div>
 								<!--/ End Video Animation -->
-								<a href="https://www.youtube.com/watch?v=RFVXy6CRVR4" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
+								<a href="{{ url($about->video) }}" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
 							</div>
 						</div>
 						<!-- End Choose Rights -->
@@ -188,17 +188,17 @@
 		</section>
 		<!--/ End Why choose -->
 
-		<!-- Start Call to action -->
+		<!-- Start Call to action [Done] -->
 		<section class="call-action overlay" data-stellar-background-ratio="0.5">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-12">
 						<div class="content">
-							<h2>Do you need Emergency Medical Care? Call @ 1234 56789</h2>
+							<h2>Do you need Emergency Medical Care? Call @ {{ $basicInfo->phone ?? 1234567890 }}</h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor dictum turpis nec gravida.</p>
 							<div class="button">
-								<a href="#" class="btn">Contact Now</a>
-								<a href="#" class="btn second">Learn More<i class="fa fa-long-arrow-right"></i></a>
+								<a href="{{ url('/contact') }}" class="btn">Contact Now</a>
+								<a href="{{ url('/contact') }}" class="btn second">Learn More<i class="fa fa-long-arrow-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -207,7 +207,7 @@
 		</section>
 		<!--/ End Call to action -->
 
-		<!-- Start portfolio -->
+		<!-- Start portfolio [Done] -->
 		<section class="portfolio section" >
 			<div class="container">
 				<div class="row">
@@ -225,38 +225,13 @@
 				<div class="row">
 					<div class="col-lg-12 col-12">
 						<div class="owl-carousel portfolio-slider">
-							<div class="single-pf">
-								<img src="{{ asset('public/frontend/img/pf1.jpg') }}" alt="#">
-								<a href="portfolio-details.html" class="btn">View Details</a>
-							</div>
-							<div class="single-pf">
-								<img src="{{ asset('public/frontend/img/pf2.jpg') }}" alt="#">
-								<a href="portfolio-details.html" class="btn">View Details</a>
-							</div>
-							<div class="single-pf">
-								<img src="{{ asset('public/frontend/img/pf3.jpg') }}" alt="#">
-								<a href="portfolio-details.html" class="btn">View Details</a>
-							</div>
-							<div class="single-pf">
-								<img src="{{ asset('public/frontend/img/pf4.jpg') }}" alt="#">
-								<a href="portfolio-details.html" class="btn">View Details</a>
-							</div>
-							<div class="single-pf">
-								<img src="{{ asset('public/frontend/img/pf1.jpg') }}" alt="#">
-								<a href="portfolio-details.html" class="btn">View Details</a>
-							</div>
-							<div class="single-pf">
-								<img src="{{ asset('public/frontend/img/pf2.jpg') }}" alt="#">
-								<a href="portfolio-details.html" class="btn">View Details</a>
-							</div>
-							<div class="single-pf">
-								<img src="{{ asset('public/frontend/img/pf3.jpg') }}" alt="#">
-								<a href="portfolio-details.html" class="btn">View Details</a>
-							</div>
-							<div class="single-pf">
-								<img src="{{ asset('public/frontend/img/pf4.jpg') }}" alt="#">
-								<a href="portfolio-details.html" class="btn">View Details</a>
-							</div>
+
+							@foreach ($projects as $project)
+								<div class="single-pf">
+									<img src="{{ asset($project->image) }}" alt="{{ $project->title }}">
+									<a href="{{ route('project-details', $project->id) }}" class="btn">View Details</a>
+								</div>
+							@endforeach
 						</div>
 					</div>
 				</div>
@@ -264,15 +239,13 @@
 		</section>
 		<!--/ End portfolio -->
 
-		<!-- Start service -->
+		<!-- Start service [Done] -->
 		<section class="services section">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section-title">
 							<h2>We Offer Different Services To Improve Your Health</h2>
-{{--							<img src="{{ asset('public/frontend/img/section-img.png') }}" alt="#">--}}
-{{--							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>--}}
 						</div>
 					</div>
 				</div>
@@ -369,7 +342,6 @@
 						<div class="section-title">
 							<h2>We Are Always Ready to Help You. Book An Appointment</h2>
 							<img src="{{ asset('public/frontend/img/section-img.png') }}" alt="#">
-{{--							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>--}}
 						</div>
 					</div>
 				</div>

@@ -17,7 +17,7 @@
                 <div class="col-12">
                     <h2>Portfolio Details</h2>
                     <ul class="bread-list">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ url('/') }}">Home</a></li>
                         <li><i class="icofont-simple-right"></i></li>
                         <li class="active">Portfolio Details</li>
                     </ul>
@@ -35,29 +35,31 @@
             <div class="col-12">
                 <div class="inner-content">
                     <div class="image-slider">
-                        <img src="{{ asset('public/frontend/img/call-bg.jpg') }}" alt="#">
+                        <img src="{{ asset($project->image) }}" alt="#">
                     </div>
 
                     <div class="date">
                         <ul>
-                            <li><span>Category :</span> Heart Surgery</li>
-                            <li><span>Date :</span> April 20, 2019</li>
-                            <li><span>Client :</span> Suke Agency</li>
-                            <li><span>Ags :</span> Typo</li>
+                            <li><span>Category :</span> {{ $project->category }}</li>
+                            <li><span>Date :</span> {{ $project->date }}</li>	
+                            <li><span>Client :</span> {{ $project->client_name }}</li>
+                            <li><span>Age :</span> {{ $project->age }}</li>
                         </ul>
                     </div>
 
                     <div class="body-text">
-                        <h3>Here is the name of this project here</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor a ti incididunt ut labore et dolore to in magna aliqua. Ut enim ad minim veniam, quis to the in nostrud.abore et dolore magna aliqua uis nostrud.Lorem ipsum dolor sit amet, in a in to in a consectetur.ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis to the in nostrud.abore et dolore magna in a aliqua uis nostrud.Lorem ipsum dolor sit amet, in aed do eiusmod</p>
-                        <p>ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis to the in nostrud.abore et dolore magna to in aliqua uis nostrud.Lorem ipsum dolor sit amet, in aed do eiusmod.ncididunt ut labore et dolore magna aliqua. </p>
-                        <p>ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis to the in nostrud.abore et dolore magna a aliqua uis nostrud.Lorem ipsum dolor sit amet, in aed do eiusmod.ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis to the in nostrud.abore et dolore magna aliqua uis nostrud.Lorem ipsum dolor sit amet, in aed do eiusmod. dolor sit amet, in aed do eiusmod.ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis to the in nostrud.abore et dolore magna aliqua uis nostrud.</p>
+                        <h3>{{ $project->title }}</h3>
+
+                        <div class="details-content">
+                            {!! $project->description !!}
+                        </div>
+
                         <div class="share">
                             <h4>Share Now -</h4>
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ $project->facebook }}"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ $project->twitter }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ $project->linkedin }}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
                     </div>

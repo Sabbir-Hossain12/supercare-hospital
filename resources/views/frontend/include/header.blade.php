@@ -60,8 +60,8 @@
 									<nav class="navigation">
 										<ul class="nav menu">
 											<li class="active"><a href="{{ url('/') }}">Home </a></li>
-											<li><a href="#">Doctors </a></li>
-											<li><a href="#">Services </a></li>
+											<li><a href="{{ url('/doctor') }}">Doctors </a></li>
+											<li><a href="{{ url('/service') }}">Services </a></li>
 											<li><a href="#">Blogs </a></li>
 											<li><a href="{{ url('/contact') }}">Contact Us</a></li>
 										</ul>

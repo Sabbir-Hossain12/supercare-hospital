@@ -169,6 +169,7 @@ class ProjectController extends Controller
             $project->image   = $imagePath . $imageName;
         }
 
+        // dd($project);
         $project->save();
 
         return response()->json(['message'=> "success"], 200);

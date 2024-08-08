@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\BasicInfoController;
 use App\Http\Controllers\Backend\ProjectController;
+use App\Http\Controllers\Backend\DoctorController;
 
 
 
@@ -29,6 +30,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['Is_admin', 'auth']], functi
     Route::resource('contact', ContactController::class)->names('admin.contact');
     Route::get('/get-contact',[ContactController::class,'getData'])->name('admin.get-contact');
     Route::post('/contact/status',[ContactController::class,'adminContactStatus'])->name('admin.contact.status');
+
+    //____  Doctor  ____//
+    Route::resource('doctor', DoctorController::class)->names('admin.doctor');
+    Route::get('/get-doctor',[DoctorController::class,'getData'])->name('admin.get-doctor');
+    Route::post('/doctor/status',[DoctorController::class,'adminDoctorStatus'])->name('admin.doctor.status');
     
     //____ Project  ____//
     Route::resource('project', ProjectController::class)->names('admin.project');
