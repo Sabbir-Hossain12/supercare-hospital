@@ -90,12 +90,12 @@ id="layout-navbar">
         <li>
           <form method="POST" action="{{ route('logout') }}">
             @csrf
-
-              <a class="dropdown-item" onclick="event.preventDefault();
-              this.closest('form').submit();">
+              
+              <div class="d-flex justify-items-center align-items-center justify-content-center">
                 <i class="bx bx-power-off me-2"></i>
-                <span class="align-middle">Log Out</span>
-              </a>
+                <button class="align-middle">Log Out</button>
+              </div>
+             
           </form>
         </li>
       </ul>

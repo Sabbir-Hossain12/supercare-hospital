@@ -1,7 +1,10 @@
 <?php
 
+
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Frontend\AppointmentController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Project;
 use Illuminate\Support\Facades\Route;
@@ -34,7 +37,10 @@ Route::get('/project-details/{id}', function ($id) {
 })->name('project-details');
 
 
-Route::view('/contact', 'frontend.pages.static_pages.contact');
+Route::resource('/contact', ContactController::class)->names('contact');
+Route::resource('/appointment', AppointmentController::class)->names('appointment');
+
+//Route::view('/contact', 'frontend.pages.static_pages.contact');
 Route::view('/doctor', 'frontend.pages.static_pages.doctor');
 Route::view('/service', 'frontend.pages.static_pages.service');
 Route::view('/appointment', 'frontend.pages.static_pages.appointment');

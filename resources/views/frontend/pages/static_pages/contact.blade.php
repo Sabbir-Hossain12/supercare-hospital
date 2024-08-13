@@ -46,7 +46,7 @@
                         <h2>Contact With Us</h2>
                         <p>If you have any questions please fell free to contact with us.</p>
                         <!-- Form -->
-                        <form class="form" method="post" action="{{ route('admin.contact.store') }}">
+                        <form class="form" method="post" action="{{ route('contact.store') }}">
                             @csrf
 
                             <div class="row">

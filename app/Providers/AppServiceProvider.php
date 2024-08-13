@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('frontend.pages.home', function($view)
         {
             $sliders= Banner:: where('status',1)->get();
-            $schedules= Schedule::where('status',1)->get();
+            $schedules= Schedule::where('status',1)->limit(3)->get();
             $services= Service::where('status',1)->get();
             $projects= Project::where('status',1)->get();
             $blogs= Blog::where('status',1)->limit(6)->get();

@@ -64,7 +64,7 @@
 											<li class="@if(request()->is('doctor')) active  @endif"><a href="{{ url('/doctor') }}">Doctors </a></li>
 											<li class="@if(request()->is('service')) active  @endif"><a href="{{ url('/service') }}">Services </a></li>
 											<li class="@if(request()->routeIs('blogList')) active  @endif"><a href="{{route('blogList')}}">Blogs </a></li>
-											<li class="@if(request()->is('contact')) active  @endif"><a href="{{ url('/contact') }}">Contact Us</a></li>
+											<li class="@if(request()->is('contact')) active  @endif"><a href="{{ route('contact.index') }}">Contact Us</a></li>
 
 										</ul>
 									</nav>
