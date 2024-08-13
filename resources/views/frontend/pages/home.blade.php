@@ -319,22 +319,22 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-6 col-md-12 col-12">
-						<form class="form" action="{{route('admin.appointment.store')}}" method="post">
+						<form class="form" action="{{route('appointment.store')}}" method="post">
                             @csrf
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<input name="name" type="text" placeholder="Name">
+										<input name="name" type="text" placeholder="Name" required>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<input name="email" type="email" placeholder="Email">
+										<input name="email" type="email" placeholder="Email" required>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<input name="phone" type="text" placeholder="Phone">
+										<input name="phone" type="text" placeholder="Phone" required>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">

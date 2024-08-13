@@ -69,7 +69,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-md-12 col-12">
-                <form class="form" action="{{route('admin.appointment.store')}}" method="post">
+                <form class="form" action="{{route('appointment.store')}}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">

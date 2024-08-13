@@ -46,19 +46,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-
-        $contact = new Contact();
-
-        $contact->name                  = $request->name;
-        $contact->email                 = $request->email;
-        $contact->mobile                = $request->mobile;
-        $contact->subject               = $request->subject;
-        $contact->message               = $request->message;
-        $contact->status                = 1;
-
-        $contact->save();
-
-        return redirect()->back();
+        
     }
 
     /**
