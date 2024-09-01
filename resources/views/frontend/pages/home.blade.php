@@ -133,7 +133,7 @@
 						<div class="section-title">
 							<h2>We Offer Different Services To Improve Your Health</h2>
 							{{-- <img src="{{ asset('public/frontend/img/section-img.png') }}" alt="#"> --}}
-							<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
+							<!--<p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>-->
 						</div>
 					</div>
 				</div>
@@ -194,8 +194,8 @@
 					<div class="col-lg-12 col-md-12 col-12">
 						<div class="content">
 							<h2>Do you need Emergency Medical Care? Call @ {{ $basicInfo->phone ?? 1234567890 }}</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor dictum turpis nec gravida.</p>
-							<div class="button">
+							<!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor dictum turpis nec gravida.</p>-->
+							<div class="button mt-2">
 								<a href="{{ url('/contact') }}" class="btn">Contact Now</a>
 							</div>
 						</div>
@@ -228,7 +228,9 @@
 							@foreach ($projects as $project)
 								<div class="single-pf">
 									<img src="{{ asset($project->image) }}" alt="{{ $project->title }}">
-									<a href="{{ route('project-details', $project->id) }}" class="btn">View Details</a>
+									<!--<a href="{{ route('project-details', $project->id) }}" class="btn">-->
+									    <!--View Details-->
+									    <!--</a>-->
 								</div>
 							@endforeach
 						</div>
