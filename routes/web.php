@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\Backend\DoctorController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Frontend\AppointmentController;
@@ -55,6 +56,8 @@ Route::view('/appointment', 'frontend.pages.static_pages.appointment');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
+// web.php
+Route::get('/doctors-by-department/{id}', [DoctorController::class, 'getDoctorsByDepartment'])->name('doctors.by.department');
 
 
 

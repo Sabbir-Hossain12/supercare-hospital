@@ -196,7 +196,7 @@
 							<h2>Do you need Emergency Medical Care? Call @ {{ $basicInfo->phone ?? 1234567890 }}</h2>
 							<!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor dictum turpis nec gravida.</p>-->
 							<div class="button mt-2">
-								<a href="{{ url('/contact') }}" class="btn">Contact Now</a>
+								<a href="tel:{{$basicInfo->phone}}" class="btn">Contact Now</a>
 							</div>
 						</div>
 					</div>

@@ -72,8 +72,8 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('frontend.pages.static_pages.doctor', function($view)
         {
-            $doctor = Doctor::where('status',1)->get();
-
+            $doctor = Doctor::where('status',1)->with('department')->get();
+                
             $view->with([
                 'doctor' => $doctor,
             ]);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use DataTables;
@@ -14,12 +15,13 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.doctor.index');
+        $departments = Department::where('status', 1)->get();
+        return view('backend.pages.doctor.index',compact('departments'));
     }
 
     public function getData(Request $request)
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::with('department')->get();
 
         // dd($categories);
 
@@ -62,7 +64,7 @@ class DoctorController extends Controller
         $doctor = new Doctor();
 
         $doctor->title              = $request->title;
-        $doctor->category           = $request->category;
+        $doctor->department_id      = $request->department_id;
         $doctor->status             = $request->status;
 
         if( $request->file('image') ){
@@ -83,7 +85,7 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function adminProjectStatus(Request $request)
+    public function adminDoctorStatus(Request $request)
     {
         $id = $request->id;
         $Current_status = $request->status;
@@ -120,7 +122,7 @@ class DoctorController extends Controller
         $doctor = Doctor::find($id);
 
         $doctor->title              = $request->title;
-        $doctor->category           = $request->category;
+        $doctor->department_id      = $request->department_id;
         $doctor->status             = $request->status;
 
 
@@ -159,5 +161,12 @@ class DoctorController extends Controller
         $doctor->delete();
 
         return response()->json(['message' => 'Doctor has been deleted.'], 200);
+    }
+
+
+    public function getDoctorsByDepartment($id)
+    {
+        $doctors = Doctor::where('department_id', $id)->get();
+        return response()->json($doctors);
     }
 }

@@ -30,13 +30,17 @@ class ContactController extends Controller
              })
              ->addColumn('status', function ($contact) {
                 if ($contact->status == 1) {
-                    return '<span class="badge bg-label-primary cursor-pointer" id="status" data-id="'.$contact->id.'" data-status="'.$contact->status.'">Active</span>';
+                    return '<span class="badge bg-label-primary cursor-pointer" id="status" data-id="'.$contact->id.'" data-status="'.$contact->status.'">Pending</span>';
                 } else {
-                    return '<span class="badge bg-label-danger cursor-pointer" id="status" data-id="'.$contact->id.'" data-status="'.$contact->status.'">Deactive</span>';
+                    return '<span class="badge bg-label-danger cursor-pointer" id="status" data-id="'.$contact->id.'" data-status="'.$contact->status.'">Replied</span>';
                 }
             })
+            
+            ->addColumn('action', function ($contact) {
+                return '<a href="javascript:void(0)" class="btn btn-sm btn-danger" id="deleteContactBtn" data-id="'.$contact->id.'"><i class="fas fa-trash"></i></a>';
+            })
 
-            ->rawColumns(['name', 'status'])
+            ->rawColumns(['name', 'status','action'])
             ->make(true);
     }
 
@@ -68,6 +72,14 @@ class ContactController extends Controller
         $page->save();
 
         return response()->json(['message' => 'success', 'status' => $status, ]);
+    }
+
+
+    public function destroy($id)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+        return response()->json(['message' => 'success']);
     }
 
 }
