@@ -28,6 +28,7 @@
                             <th>Message</th>
                             <th>Date</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
 
@@ -56,9 +57,7 @@
 
     <script>
 
-        $(document).ready(function(){
-    
-
+        $(document).ready(function() {
 
 
             // show all data
@@ -86,10 +85,10 @@
                     },
                     {
                         data: 'department'
-                    }, 
+                    },
                     {
                         data: 'message',
-                        width:'30%'
+                        width: '30%'
                     },
                     {
                         data: 'date'
@@ -98,8 +97,11 @@
 
                     {
                         data: 'status'
+                    },
+                    {
+                        data: 'action'
                     }
-                
+
                 ]
             });
 
@@ -143,10 +145,61 @@
                 })
             })
 
-          
+            //Appointment Delete
+            $(document).on('click', '#deleteAppointmentBtn', function () {
+
+                var id = $(this).data('id');
+
+
+                swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this !",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Yes, delete it!"
+                })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+
+                            $.ajax({
+                                type: "DELETE",
+                                url:  "{{ url('admin/appointment') }}/" + id,
+                                data: {
+                                    // '_token': token,
+                                    id: id,
+
+                                },
+                                success: function (res) {
+
+                                    Swal.fire({
+                                        title: "Deleted!",
+                                        text: `${res.message}`,
+                                        icon: "success"
+                                    });
+                                    
+                                    scheduleTable.ajax.reload();
+
+                                    
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            })
+                        }
+                        
+                        else
+                        {
+                            swal.fire('Your Data is Safe');
+                        }
+
+                    })
+            })
+        });
           
 
-        });
+        
 
     </script>
 

@@ -3,6 +3,13 @@
 
 @push('meta-title')
     {{ env('APP_NAME') }} | Doctor Page
+    
+    
+@endpush
+
+@push('add-css') 
+    
+    <link rel="stylesheet" href="{{ asset('public/frontend/css/tab.css') }}">
 @endpush
 
 
@@ -26,30 +33,52 @@
 </div>
 <!-- End Breadcrumbs -->
 
-
-<!-- Start Team -->
-<section id="team" class="team section single-page">
+<!-- Portfolio Section Start -->
+<section class="portfolio_section pb-0 mb-0">
     <div class="container">
         <div class="row">
-
-            @foreach ($doctor as $item)
-                <div class="col-lg-4 col-md-6 col-12">
-                    <!-- Single Team -->
-                    <div class="single-team">
-                        <div class="t-head">
-                            <img src="{{ asset($item->image) }}" alt="#">
-                            {{-- <div class="t-icon">
-                                <a href="appointment.html" class="btn">Get Appointment</a>
-                            </div> --}}
-                        </div>
-                        <div class="t-bottom">
-                            <p>{{ $item->category }}</p>
-                            <h2><a href="javascript:void()">{{ $item->title }}</a></h2>
-                        </div>
-                    </div>
-                    <!-- End Single Team -->
+            <div class="col-lg-12">
+                <div class="portfolio_menu d-flex justify-content-center mt-4">
+                    <ul class="text-center">
+                        
+                        @foreach($departments as $department) 
+                        <li class="menu_listing" onclick="updateDepartmentTab('{{ $department->id }}')"><i class='bx bx-plus-medical'></i> {{ $department->department_name }}</li>
+                        @endforeach
+{{--                        active_portfolio--}}
+                    </ul>
                 </div>
-            @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Portfolio Section end -->
+
+<!-- Start Team -->
+<section id="team" class="team section single-page pt-0 mt-0">
+    <div class="container">
+        <div class="row" id="doctorList">
+            
+
+{{--            @foreach ($doctor as $item)--}}
+{{--                <div class="col-lg-4 col-md-6 col-12">--}}
+{{--                    <!-- Single Team -->--}}
+{{--                    <div class="single-team">--}}
+{{--                        <div class="t-head">--}}
+{{--                            <img src="{{ asset($item->image) }}" alt="#">--}}
+{{--                            --}}{{-- <div class="t-icon">--}}
+{{--                                <a href="appointment.html" class="btn">Get Appointment</a>--}}
+{{--                            </div> --}}
+{{--                        </div>--}}
+{{--                        <div class="t-bottom">--}}
+{{--                            <p>{{ $item->department->department_name }}</p>--}}
+{{--                            <h2><a href="javascript:void()">{{ $item->title }}</a></h2>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- End Single Team -->--}}
+{{--                </div>--}}
+{{--            @endforeach--}}
 	
 
 
@@ -155,4 +184,71 @@
 
 @push('script-tag')
 
+{{--    <script>--}}
+{{--        // Portfolio Section  --}}
+{{--        let menu_listing = document.querySelectorAll('ul .menu_listing');--}}
+{{--        let portfolio_container = document.querySelectorAll('.portfolio_container');--}}
+
+{{--        menu_listing.forEach((element, i) => {--}}
+{{--            element.addEventListener('click', (e) => {--}}
+{{--                // Fade out the currently active container--}}
+{{--                portfolio_container.forEach((container, index) => {--}}
+{{--                    if (container.classList.contains('active_portfolio')) {--}}
+{{--                        container.style.opacity = '0';--}}
+{{--                        setTimeout(() => {--}}
+{{--                            container.classList.remove('active_portfolio');--}}
+{{--                            if (i !== index) {--}}
+{{--                                menu_listing[index].classList.remove('active_portfolio');--}}
+{{--                            }--}}
+{{--                        }, 300); // match the CSS transition duration--}}
+{{--                    }--}}
+{{--                });--}}
+
+{{--                // Delay fade in of the new container--}}
+{{--                setTimeout(() => {--}}
+{{--                    element.classList.add('active_portfolio');--}}
+{{--                    portfolio_container[i].classList.add('active_portfolio');--}}
+{{--                    portfolio_container[i].style.opacity = '1';--}}
+{{--                }, 300); // match the CSS transition duration--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
+    
+    
+    
+    <script>
+
+
+        function updateDepartmentTab(departmentId) {
+            $.ajax({
+                url: "{{url('/doctors-by-department')}}/" + departmentId,
+                method: 'GET',
+                success: function(response) {
+                    console.log('success');
+                    // Clear the current team section
+                    $('#doctorList').empty();
+
+                    // Loop through the response and append the doctors to the team section
+                    response.forEach(function(doctor) {
+                        $('#doctorList').append(`
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="single-team">
+                            <div class="t-head">
+                                <img src="${doctor.image}" alt="#">
+                            </div>
+                            <div class="t-bottom">
+                                <p>${doctor.department.department_name}</p>
+                                <h2><a href="javascript:void(0)">${doctor.title}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching doctors:', error);
+                }
+            });
+        }
+    </script>
 @endpush

@@ -3,6 +3,8 @@
 
 <head>
      @include('frontend.include.head-titles')
+    
+    
 </head>
 
 <body>

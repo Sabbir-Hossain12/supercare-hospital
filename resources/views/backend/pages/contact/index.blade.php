@@ -19,7 +19,7 @@
 
 
         <div class="card-body">
-          <div class="table-responsive text-nowrap">
+          <div class="table-responsive">
             <table class="table table-bordered" id="contactTables">
               <thead>
                 <tr>
@@ -29,6 +29,7 @@
                   <th>Phone Number</th>
                   <th>Subject</th>
                   <th>Message</th>
+                    
                   <th>status</th>
                 </tr>
               </thead>
@@ -85,11 +86,16 @@
                     data: 'subject'
                 },
                 {
-                    data: 'message'
+                    data:'message'
                 },
+              
                 {
                     data: 'status'
                 },
+
+                {
+                    data:'action'
+                }
             ]
         });
 
@@ -115,13 +121,13 @@
                     if (res.status == 1) {
                         swal.fire(
                         {
-                            title: 'Status Changed to Active',
+                            title: 'Status Changed to Pending',
                             icon: 'success'
                         })
                     } else {
                         swal.fire(
                         {
-                            title: 'Status Changed to Inactive',
+                            title: 'Status Changed to Replied',
                             icon: 'success'
                         })
                     }
@@ -134,7 +140,61 @@
         })
 
 
+         //Contact Delete
+         $(document).on('click', '#deleteContactBtn', function () {
+
+             var id = $(this).data('id');
+
+
+             swal.fire({
+                 title: "Are you sure?",
+                 text: "You won't be able to revert this !",
+                 icon: "warning",
+                 showCancelButton: true,
+                 confirmButtonColor: "#d33",
+                 cancelButtonColor: "#3085d6",
+                 confirmButtonText: "Yes, delete it!"
+             })
+                 .then((result) => {
+                     if (result.isConfirmed) {
+
+                         $.ajax({
+                             type: "DELETE",
+                             url:  "{{ url('admin/contact') }}/" + id,
+                             data: {
+                                 // '_token': token,
+                                 id: id,
+
+                             },
+                             success: function (res) {
+
+                                 Swal.fire({
+                                     title: "Deleted!",
+                                     text: `${res.message}`,
+                                     icon: "success"
+                                 });
+
+                                 contactTables.ajax.reload();
+
+
+                             },
+                             error: function (err) {
+                                 console.log(err);
+                             }
+                         })
+                     }
+
+                     else
+                     {
+                         swal.fire('Your Data is Safe');
+                     }
+
+                 })
+         })
+            
     });
+     
+     
 
  </script>
 

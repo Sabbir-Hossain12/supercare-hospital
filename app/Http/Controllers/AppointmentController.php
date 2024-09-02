@@ -32,9 +32,17 @@ class AppointmentController extends Controller
                           class="fa-solid fa-toggle-off fa-2x" style="color: grey"></i>
                     </a>';
                 }
+                
+            })
+            
+            ->addColumn('action', function ($appointment) 
+            {
+                return '<a class="btn btn-sm btn-danger" id="deleteAppointmentBtn" href="javascript:void(0)" data-id="'.$appointment->id.'"> 
+                        <i class="fas fa-trash"> </i></a>';
+                
             })
           
-            ->rawColumns(['status'])
+            ->rawColumns(['status', 'action'])
             ->addIndexColumn()
             ->make(true);
     }
@@ -77,6 +85,13 @@ class AppointmentController extends Controller
         $page->save();
 
         return response()->json(['message' => 'success', 'status' => $stat, 'id' => $id]);
+    }
+    
+    public function destroy($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $appointment->delete();
+        return response()->json(['message' => 'success']);
     }
     
     

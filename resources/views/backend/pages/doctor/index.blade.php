@@ -26,8 +26,8 @@
                 <tr>
                   <th>#SL.</th>
                   <th>Image</th>
-                  <th>Title</th>
-                  <th>Doctor Category</th>
+                  <th>Name</th>
+                  <th>Department</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -57,14 +57,21 @@
                 <form id="createForm" enctype="multipart/form-data">
                     @csrf
 
+                   
+
                     <div class="col mb-3">
-                        <label for="category" class="form-label">Category</label>
-                        <input type="text" id="category" name="category" class="form-control" placeholder="category.....">
+                        <label for="title" class="form-label">Doctor Name</label>
+                        <input type="text" id="title" name="title" class="form-control" placeholder="Title.....">
                     </div>
 
                     <div class="col mb-3">
-                        <label for="title" class="form-label">Doctor Title</label>
-                        <input type="text" id="title" name="title" class="form-control" placeholder="Title.....">
+                        <label for="department_id" class="form-label">Department</label>
+                        <select class="form-control" id="department_id" name="department_id">
+                            <option selected="" disabled >Select Department</option>
+                            @foreach ($departments as $department)
+                                <option value="{{$department->id}}">{{$department->department_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="col mb-3">
@@ -75,7 +82,7 @@
 
                     <div class="col mb-3">
                         <label for="status" class="form-label">Status</label>
-                        <select class="form-select" id="status" name="status">
+                        <select class="form-select form-control" id="status" name="status" required>
                             <option selected="" disabled value="">Open this select menu</option>
                             <option value="1">Active</option>
                             <option value="2">Deactive</option>
@@ -109,26 +116,32 @@
 
                     <input type="text" id="up_id" name="id" hidden>
 
-                    <div class="col mb-3">
-                        <label for="category" class="form-label">Category</label>
-                        <input type="text" id="up_category" name="category" class="form-control" placeholder="category.....">
-                    </div>
+                   
 
                     <div class="col mb-3">
                         <label for="title" class="form-label">Doctor Title</label>
                         <input type="text" id="up_title" name="title" class="form-control" placeholder="Title.....">
                     </div>
+                    <div class="col mb-3">
+                        <label for="up_department_id" class="form-label">Department</label>
+                        <select class="form-control" id="up_department_id" name="department_id">
+                            <option selected="" disabled >Select Department</option>
+                            @foreach ($departments as $department)
+                                <option value="{{$department->id}}">{{$department->department_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     <div class="col mb-3">
                         <label for="image" class="form-label">Doctor Image</label>
-                        <input class="form-control" type="file" name="image" id="image" required>
+                        <input class="form-control" type="file" name="image" id="image">
 
                         <div id="imageShow"></div>
                     </div>
 
                     <div class="col mb-3">
                         <label for="status" class="form-label">Status</label>
-                        <select class="form-select" id="up_status" name="status">
+                        <select class="form-select form-control" id="up_status" name="status" required>
                             <option selected="" disabled value="">Open this select menu</option>
                             <option value="1">Active</option>
                             <option value="0">Deactive</option>
@@ -183,7 +196,7 @@
                     data: 'title'
                 },
                 {
-                    data: 'category'
+                    data: 'department.department_name'
                 },
                 {
                     data: 'status'
@@ -295,7 +308,7 @@
 
                     $('#up_id').val(data.id);
                     $('#up_title').val(data.title);
-                    $('#up_category').val(data.category);
+                    $('#up_department_id').val(data.department_id);
                     $('#imageShow').html('');
                     $('#imageShow').append(`
                         <img src={{ asset("`+ data.image +`") }} alt="" style="width: 75px;">
