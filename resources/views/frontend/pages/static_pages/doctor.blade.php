@@ -41,8 +41,11 @@
                 <div class="portfolio_menu d-flex justify-content-center mt-4">
                     <ul class="text-center">
                         
-                        @foreach($departments as $department) 
-                        <li class="menu_listing" onclick="updateDepartmentTab('{{ $department->id }}')"><i class='bx bx-plus-medical'></i> {{ $department->department_name }}</li>
+                        @foreach($departments as $key =>$department) 
+                        <li class="menu_listing {{ $key == 0 ? 'active_portfolio' : '' }}"
+                            id="{{ $key == 0 ? 'defaultTab' : '' }}" 
+                            onclick="updateDepartmentTab('{{ $department->id }}', $(this))">
+                            <i class='bx bx-plus-medical'></i> {{ $department->department_name }}</li>
                         @endforeach
 {{--                        active_portfolio--}}
                     </ul>
@@ -218,13 +221,22 @@
     
     <script>
 
+        $(document).ready(function() {
+            // Trigger click on the first tab to load its content
+            $('#defaultTab').trigger('click');
+        });
 
-        function updateDepartmentTab(departmentId) {
+        function updateDepartmentTab(departmentId,$element) {
             $.ajax({
                 url: "{{url('/doctors-by-department')}}/" + departmentId,
                 method: 'GET',
                 success: function(response) {
-                    console.log('success');
+                    // Remove active class from all tabs
+                    $('.menu_listing').removeClass('active_portfolio');
+
+                    // Add active class to the clicked tab
+                    $element.addClass('active_portfolio');
+                    
                     // Clear the current team section
                     $('#doctorList').empty();
 
@@ -237,12 +249,14 @@
                                 <img src="${doctor.image}" alt="#">
                             </div>
                             <div class="t-bottom">
-                                <p>${doctor.department.department_name}</p>
+                    <p>${doctor.department.department_name}</p>
                                 <h2><a href="javascript:void(0)">${doctor.title}</a></h2>
                             </div>
                         </div>
                     </div>
                 `);
+                        
+                        $()
                     });
                 },
                 error: function(xhr, status, error) {
