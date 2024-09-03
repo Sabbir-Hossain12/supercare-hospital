@@ -166,7 +166,7 @@ class DoctorController extends Controller
 
     public function getDoctorsByDepartment($id)
     {
-        $doctors = Doctor::where('department_id', $id)->get();
+        $doctors = Doctor::where('department_id', $id)->with('department')->get();
         return response()->json($doctors);
     }
 }
